@@ -1,0 +1,441 @@
+{
+    "dir": "ltr",
+    "lang": "en",
+    "name": "Torino PhD Journal Club",
+    "scope": "/journalclub/",
+    "display": "standalone",
+    "start_url": "https://falstaff.ddns.net/journalclub/",
+    "short_name": "MyPhDJC",
+    "theme_color": "#1997ea",
+    "description": "Torino - PhD programme in Physics - Journal Club schedule",
+    "orientation": "any",
+    "background_color": "#1997ea",
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "./images/campusnet_284x284.png",
+            "sizes": "284x284"
+        },
+        {
+            "src": "./images/campusnet_142x142.png",
+            "sizes": "142x142"
+        },
+        {
+            "src": "./images/campusnet_71x71.png",
+            "sizes": "71x71"
+        },
+        {
+            "src": "./images/campusnet_107x107.png",
+            "sizes": "107x107"
+        },
+        {
+            "src": "./images/campusnet_89x89.png",
+            "sizes": "89x89"
+        },
+        {
+            "src": "./images/campusnet_600x600.png",
+            "sizes": "600x600"
+        },
+        {
+            "src": "./images/campusnet_300x300.png",
+            "sizes": "300x300"
+        },
+        {
+            "src": "./images/campusnet_150x150.png",
+            "sizes": "150x150"
+        },
+        {
+            "src": "./images/campusnet_225x225.png",
+            "sizes": "225x225"
+        },
+        {
+            "src": "./images/campusnet_188x188.png",
+            "sizes": "188x188"
+        },
+        {
+            "src": "./images/campusnet_1240x600.png",
+            "sizes": "1240x600"
+        },
+        {
+            "src": "./images/campusnet_620x300.png",
+            "sizes": "620x300"
+        },
+        {
+            "src": "./images/campusnet_310x150.png",
+            "sizes": "310x150"
+        },
+        {
+            "src": "./images/campusnet_465x225.png",
+            "sizes": "465x225"
+        },
+        {
+            "src": "./images/campusnet_388x188.png",
+            "sizes": "388x188"
+        },
+        {
+            "src": "./images/campusnet_1240x1240.png",
+            "sizes": "1240x1240"
+        },
+        {
+            "src": "./images/campusnet_620x620.png",
+            "sizes": "620x620"
+        },
+        {
+            "src": "./images/campusnet_310x310.png",
+            "sizes": "310x310"
+        },
+        {
+            "src": "./images/campusnet_465x465.png",
+            "sizes": "465x465"
+        },
+        {
+            "src": "./images/campusnet_388x388.png",
+            "sizes": "388x388"
+        },
+        {
+            "src": "./images/campusnet_176x176.png",
+            "sizes": "176x176"
+        },
+        {
+            "src": "./images/campusnet_88x88.png",
+            "sizes": "88x88"
+        },
+        {
+            "src": "./images/campusnet_44x44.png",
+            "sizes": "44x44"
+        },
+        {
+            "src": "./images/campusnet_66x66.png",
+            "sizes": "66x66"
+        },
+        {
+            "src": "./images/campusnet_55x55.png",
+            "sizes": "55x55"
+        },
+        {
+            "src": "./images/campusnet_256x256.png",
+            "sizes": "256x256"
+        },
+        {
+            "src": "./images/campusnet_48x48.png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "./images/campusnet_24x24.png",
+            "sizes": "24x24"
+        },
+        {
+            "src": "./images/campusnet_16x16.png",
+            "sizes": "16x16"
+        },
+        {
+            "src": "./images/campusnet_256x256.png",
+            "sizes": "256x256"
+        },
+        {
+            "src": "./images/campusnet_48x48.png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "./images/campusnet_24x24.png",
+            "sizes": "24x24"
+        },
+        {
+            "src": "./images/campusnet_16x16.png",
+            "sizes": "16x16"
+        },
+        {
+            "src": "./images/campusnet_200x200.png",
+            "sizes": "200x200"
+        },
+        {
+            "src": "./images/campusnet_100x100.png",
+            "sizes": "100x100"
+        },
+        {
+            "src": "./images/campusnet_75x75.png",
+            "sizes": "75x75"
+        },
+        {
+            "src": "./images/campusnet_63x63.png",
+            "sizes": "63x63"
+        },
+        {
+            "src": "./images/campusnet_50x50.png",
+            "sizes": "50x50"
+        },
+        {
+            "src": "./images/campusnet_50x50.png",
+            "sizes": "50x50"
+        },
+        {
+            "src": "./images/campusnet_2480x1200.png",
+            "sizes": "2480x1200"
+        },
+        {
+            "src": "./images/campusnet_1240x600.png",
+            "sizes": "1240x600"
+        },
+        {
+            "src": "./images/campusnet_930x450.png",
+            "sizes": "930x450"
+        },
+        {
+            "src": "./images/campusnet_775x375.png",
+            "sizes": "775x375"
+        },
+        {
+            "src": "./images/campusnet_620x300.png",
+            "sizes": "620x300"
+        },
+        {
+            "src": "./images/campusnet_24x24.png",
+            "sizes": "24x24"
+        },
+        {
+            "src": "./images/campusnet_30x30.png",
+            "sizes": "30x30"
+        },
+        {
+            "src": "./images/campusnet_42x42.png",
+            "sizes": "42x42"
+        },
+        {
+            "src": "./images/campusnet_54x54.png",
+            "sizes": "54x54"
+        },
+        {
+            "src": "./images/campusnet_1116x540.png",
+            "sizes": "1116x540"
+        },
+        {
+            "src": "./images/campusnet_868x420.png",
+            "sizes": "868x420"
+        },
+        {
+            "src": "./images/campusnet_620x300.png",
+            "sizes": "620x300"
+        },
+        {
+            "src": "./images/campusnet_270x270.png",
+            "sizes": "270x270"
+        },
+        {
+            "src": "./images/campusnet_210x210.png",
+            "sizes": "210x210"
+        },
+        {
+            "src": "./images/campusnet_150x150.png",
+            "sizes": "150x150"
+        },
+        {
+            "src": "./images/campusnet_120x120.png",
+            "sizes": "120x120"
+        },
+        {
+            "src": "./images/campusnet_90x90.png",
+            "sizes": "90x90"
+        },
+        {
+            "src": "./images/campusnet_70x70.png",
+            "sizes": "70x70"
+        },
+        {
+            "src": "./images/campusnet_50x50.png",
+            "sizes": "50x50"
+        },
+        {
+            "src": "./images/campusnet_106x106.png",
+            "sizes": "106x106"
+        },
+        {
+            "src": "./images/campusnet_62x62.png",
+            "sizes": "62x62"
+        },
+        {
+            "src": "./images/campusnet_44x44.png",
+            "sizes": "44x44"
+        },
+        {
+            "src": "./images/campusnet_360x360.png",
+            "sizes": "360x360"
+        },
+        {
+            "src": "./images/campusnet_210x210.png",
+            "sizes": "210x210"
+        },
+        {
+            "src": "./images/campusnet_150x150.png",
+            "sizes": "150x150"
+        },
+        {
+            "src": "./images/campusnet_170x170.png",
+            "sizes": "170x170"
+        },
+        {
+            "src": "./images/campusnet_99x99.png",
+            "sizes": "99x99"
+        },
+        {
+            "src": "./images/campusnet_71x71.png",
+            "sizes": "71x71"
+        },
+        {
+            "src": "./images/campusnet_120x120.png",
+            "sizes": "120x120"
+        },
+        {
+            "src": "./images/campusnet_70x70.png",
+            "sizes": "70x70"
+        },
+        {
+            "src": "./images/campusnet_50x50.png",
+            "sizes": "50x50"
+        },
+        {
+            "src": "./images/campusnet_512x512.png",
+            "sizes": "512x512"
+        },
+        {
+            "src": "./images/campusnet_192x192.png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "./images/campusnet_144x144.png",
+            "sizes": "144x144"
+        },
+        {
+            "src": "./images/campusnet_96x96.png",
+            "sizes": "96x96"
+        },
+        {
+            "src": "./images/campusnet_72x72.png",
+            "sizes": "72x72"
+        },
+        {
+            "src": "./images/campusnet_48x48.png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "./images/campusnet_1024x1024.png",
+            "sizes": "1024x1024"
+        },
+        {
+            "src": "./images/campusnet_180x180.png",
+            "sizes": "180x180"
+        },
+        {
+            "src": "./images/campusnet_152x152.png",
+            "sizes": "152x152"
+        },
+        {
+            "src": "./images/campusnet_120x120.png",
+            "sizes": "120x120"
+        },
+        {
+            "src": "./images/campusnet_76x76.png",
+            "sizes": "76x76"
+        },
+        {
+            "src": "./images/campusnet_750x1334.png",
+            "sizes": "750x1334"
+        },
+        {
+            "src": "./images/campusnet_1334x750.png",
+            "sizes": "1334x750"
+        },
+        {
+            "src": "./images/campusnet_1242x2208.png",
+            "sizes": "1242x2208"
+        },
+        {
+            "src": "./images/campusnet_2208x1242.png",
+            "sizes": "2208x1242"
+        },
+        {
+            "src": "./images/campusnet_640x960.png",
+            "sizes": "640x960"
+        },
+        {
+            "src": "./images/campusnet_640x1136.png",
+            "sizes": "640x1136"
+        },
+        {
+            "src": "./images/campusnet_1536x2048.png",
+            "sizes": "1536x2048"
+        },
+        {
+            "src": "./images/campusnet_2048x1536.png",
+            "sizes": "2048x1536"
+        },
+        {
+            "src": "./images/campusnet_768x1024.png",
+            "sizes": "768x1024"
+        },
+        {
+            "src": "./images/campusnet_1024x768.png",
+            "sizes": "1024x768"
+        },
+        {
+            "src": "./images/campusnet_48x48.png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "./images/campusnet_16x16.png",
+            "sizes": "16x16"
+        },
+        {
+            "src": "./images/campusnet_128x128.png",
+            "sizes": "128x128"
+        },
+        {
+            "src": "./images/campusnet_512x512.png",
+            "sizes": "512x512"
+        },
+        {
+            "src": "./images/campusnet_128x128.png",
+            "sizes": "128x128"
+        },
+        {
+            "src": "./images/campusnet_256x256.png",
+            "sizes": "256x256"
+        },
+        {
+            "src": "./images/campusnet_128x128.png",
+            "sizes": "128x128"
+        },
+        {
+            "src": "./images/campusnet_90x90.png",
+            "sizes": "90x90"
+        },
+        {
+            "src": "./images/campusnet_64x64.png",
+            "sizes": "64x64"
+        },
+        {
+            "src": "./images/campusnet_48x48.png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "./images/campusnet_32x32.png",
+            "sizes": "32x32"
+        },
+        {
+            "src": "./images/campusnet_16x16.png",
+            "sizes": "16x16"
+        },
+        {
+            "src": "./images/campusnet_60x60.png",
+            "sizes": "60x60"
+        },
+        {
+            "src": "./images/campusnet_57x57.png",
+            "sizes": "57x57"
+        },
+        {
+            "src": "./images/campusnet_114x114.png",
+            "sizes": "114x114"
+        }
+    ]
+}
