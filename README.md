@@ -6,7 +6,7 @@ Welcome to the homepage for the _Journal Club_ seminars and meetings of the [_Do
 
 This is the static version of the dynamic hosted webpage. Once you clone the project with `git clone`, you can simply open [index.html](https://gitlab.com/phd-torino-physics/jc-homepage/blob/master/index.html) in a web browser to display the page.
 
-In this repository you will find generally the whole file tree which is hosted on the server. You can also find the PHP version of the main file ([index.php](https://gitlab.com/phd-torino-physics/jc-homepage/blob/master/index.php) as a reference, though it will not work unless you can run a [LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle)).
+In this repository you will find generally the whole file tree which is hosted on the server. You can also find the PHP version of the main file ([index.php](https://gitlab.com/phd-torino-physics/jc-homepage/blob/master/index.php) as a reference, though it will not work unless you can run a [LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) server.
 
 The dynamic page is also a [Progressive Web App](https://developers.google.com/web/progressive-web-apps/): it can be displayed as a native app on most smartphones and it can work offline using the caching system. This static version has no such function but you can find the [Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers/) file [sw.js](https://gitlab.com/phd-torino-physics/jc-homepage/blob/master/sw.js) in the project, as well.
 
@@ -51,7 +51,7 @@ This is a group project by the students of the **Doctoral School in Physics and 
 
 Please, refer to this page for bug reports and info.
 
-## LICENSE
+## License
 
 Since this is a free project, designed to be open source, the code is released
 under the GNU GPLv3 license.
