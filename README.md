@@ -1,57 +1,57 @@
 # Journal Club Homepage
 
-## What is this?
+Welcome to the homepage for the _Journal Club_ seminars and meetings of the [_Doctoral School in Physics and Astrophysics_](http://dottorato.ph.unito.it/) of the [**Universit&agrave; degli Studi di Torino**](https://www.unito.it/). This is the code associated to the page, which however is separately hosted on a [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) server on a Raspberry Pi (at least for the time being) using [Apache](https://httpd.apache.org/), [MySQL/MariaDB](https://mariadb.org/) and [PHP v.7](http://www.php.net/).
 
-Since the _Journal Club_ homepage is hosted on a **Apache** server through
-**PHP**, this is a static port in pure **HTML** in order to be able to work on
-it and improve the code which will then be translated into the needed code.
+## Introduction
 
-You can find all the information you need inside the `index.html` file together
-with a detailed description of all the libraries used, etc.
+This is the static version of the dynamic hosted webpage. Once you clone the project with `git clone`, you can simply open [index.html](https://gitlab.com/phd-torino-physics/jc-homepage/blob/master/index.html) in a web browser to display the page.
 
-## What can I find here?
+In this repository you will find generally the whole file tree which is hosted on the server. You can also find the PHP version of the main file ([index.php](https://gitlab.com/phd-torino-physics/jc-homepage/blob/master/index.php) as a reference, though it will not work unless you can run a [LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle)).
 
-Here you will find almost the same files which are hosted on the server. The
-differences being:
+The dynamic page is also a [Progressive Web App](https://developers.google.com/web/progressive-web-apps/): it can be displayed as a native app on most smartphones and it can work offline using the caching system. This static version has no such function but you can find the [Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers/) file [sw.js](https://gitlab.com/phd-torino-physics/jc-homepage/blob/master/sw.js) in the project, as well.
 
-- **CSS/Javascript**:
-    - _Server_: minified version and mostly served through CDN in order to
-      speed up execution time
-    - _GitLab_: full version, generally hosted directly here in order to work
-      independently
-- [**Service Worker**](https://developers.google.com/web/fundamentals/primers/service-workers/):
-    - _Server_: fully enabled and working. The Progressive Web App is active
-      and the page is operational even offline
-    - _GitLab_: you can find the file `sw.js` and the relative code in
-      `js/main.js` but they are disabled or not referenced. We should activate
-      them carefully and just to check some small part of code
-- **PHP**:
-    - `index.php.bak` is the original page hosted on the server with the whole
-      code
-    - `abstract/abstract.php` is the generator for abstract and title PDF file
-    - `bulletin/Parsedown.php` together with `bulletin/message.md` is the
-      generator of the bulletin board: we write Markdown code in `message.md`
-      and then use the parser to display it on the page
-- **Manifest**:
-    - _Server_: `manifest.json` is used to pass every information, favicon,
-      icon, image to the Web App functionalities,
-    - _GitLab_: `manifest.json` is present but not referenced inside
-      `index.html`
+## Project Structure
 
-## How can I contribute?
+Inside the project you can find several file and directories, such as:
 
-You can add, modify, delete every part of the code as long as every change is
-accompanied by **proper comments**. Here you can find some inspiration from
-where you can start coding:
+- `abstract`:
+  - `abstract.php`: this is the file that **in the hosted page** (not the static version) generates the PDF files which you can access through buttons. As you can find in [main.js](https://gitlab.com/phd-torino-physics/jc-homepage/blob/master/js/main.js), though in the static version it has been disabled, there exist a sort of _administrator view_ accessible through a keyboard shortcut which will let you generate the PDF for the first time.
+- `bulletin`:
+  - `message.md`: Markdown file with the message of the day/week/month
+  - `Parsedown.php`: external [library](http://parsedown.org/) which translates the message of the day in HTML tags to be displayed on the hosted page (in the static version it is not referenced)
+- `css`:
+  - `bootstrap.css`: main CSS file written in SASS. You can find it [here](https://getbootstrap.com/).
+  - `bootstrap.css.map`: map file for the previous file, written in SASS.
+- `images`:
+  - most of the images are needed for the Progressive Web App functionality in the [manifest.json](https://developers.google.com/web/fundamentals/web-app-manifest/). In the page you will mostly need the `jpg` files (which should be Progressive JPEG).
+- `js`:
+  - `bootstrap.js`: Javascript file needed by the CSS file
+  - `bootstrap.js.map`: map file for the previous Javascript
+  - `jquery.js`: Javascript library for `bootstrap.js`
+  - `lazyload.js`: Javascript for the [lazy load](https://appelsiini.net/projects/lazyload/) functionality (i.e.: initially the page loads some dummy pictures and only after the page is fully loaded it displays the correct images)
+  - `main.js`: though it is disabled in the static version, here you can find the custom functions such as the administrator panel and the service worker declaration
+  - `manup.js`: only needed to generate the Progressive Web App favicon and splashscreen, starting from the `manifest.json` file
+  - `popper.js`: bundled with Bootstrap, in case we want to display tooltip messages
+  - `scrollreveal.js`: [scroll reveal](https://scrollrevealjs.org/) functionality
+- `index.html`: static webpage
+- `index.php`: dynamic PHP page
+- `manifest.json`: declaration of the page properties
+- `sw.js`: Service Worker file
+- `README.md`: this file
+- `CONTRIBUTING.md`: contribution guidelines
+- `LICENSE`: license file
 
-- there are some incompatibility issues with Chrome when using the `.carousel`
-  class in _Bootstrap_ which should be solved,
-- we need a new fancier interface,
-- we might want an administrator interface (with the service worker we can send
-  push notifications) to keep in touch with people,
-- as a consequence: we might integrate a mailing list for updates through
-  email,
-- we definitely want a fancier title and icon (something different from the
-  Campusnet logo),
-- we should try and rewrite the lazy load function as well as some of the CSS
-  code (at least): this is actually a **huge** effort but it should be a goal.
+## Contributions
+
+You can have a look at [CONTRIBUTING.md](https://gitlab.com/phd-torino-physics/jc-homepage/blob/master/CONTRIBUTING.md) for some guidelines.
+
+## Authors
+
+This is a group project by the students of the **Doctoral School in Physics and Astrophysics** in Torino, Italy.
+
+Please, refer to this page for bug reports and info.
+
+## LICENSE
+
+Since this is a free project, designed to be open source, the code is released
+under the GNU GPLv3 license.

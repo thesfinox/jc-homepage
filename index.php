@@ -3,11 +3,11 @@
 <?php
 
 $DB_SNAME = "localhost";
-$DB_SPORT = "1234556789";
-$DB_UNAME = "username";
-$DB_UPSSW = "password";
-$DB_DNAME = "database";
-$DB_TABLE = "table";
+$DB_SPORT = "12598";
+$DB_UNAME = "jc_admin";
+$DB_UPSSW = "k27XaYt8Dp";
+$DB_DNAME = "journalclub";
+$DB_TABLE = "jc_schedule";
 
 $DB_DCONN = new mysqli($DB_SNAME, $DB_UNAME,
                        $DB_UPSSW, $DB_DNAME,
@@ -440,7 +440,10 @@ if ($DB_DCONN->connect_errno) {
 
 <footer class="footer bg-primary mt-5 py-3 text-center">
     <div class="text-white">
-        <i>Idea and Design by the students of the Graduate School in Physics and Astrophysics</i> - 2018
+        <i>Idea and Design by the students of the Graduate School in Physics and Astrophysics</i> - 2018 - 
+        <a class="text-white" href="https://gitlab.com/phd-torino-physics/jc-homepage" target="_blank" rel="noopener">
+            Source code
+        </a>
     </div>
 </footer>
 
