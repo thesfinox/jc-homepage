@@ -3,515 +3,362 @@
 
 <head>
 
-    <!-- Compatibility with Microsoft Edge -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <!-- Necessary for mobile-friendly view and scaling -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Charset: use UTF-8 for wider compatibility -->
-    <meta charset="UTF-8">
-
-<!--
-    Just a few notes before we start:
-
-        IMAGES:
-        - make sure to upload and use only PNG (if strictly needed) or JPG
-        images,
-        - the latter should always be Progressive JPG and not too large in
-        size,
-        - we use a lazy loading utility in order to speed up page loading: we
-        can use some dummy images before we load the actual picture but please
-        make sure the dummies are no more than 10-20 kB in size,
-
-        HTML/CSS/JS:
-        - the actual webpage will be dynamic and written in PHP, therefore this
-        is just a static port of the original page with some ad hoc content,
-        - if you find a way to write such a huge CSS file in a better way, we
-        can think about switching to a custom file instead of using Bootstrap,
-
-        CODING ETIQUETTE:
-        - please remember to keep the indentation as consistent as possible
-        through the whole file,
-        - remember to comment appropriately every single bit of code you
-        change/use!!!
--->
-
-    <!-- Page metadata -->
-    <meta name="description" content="Torino - PhD programme in Physics - Journal Club">
-    <meta name="author" content="Riccardo Finotello">
-    <meta name="keywords" content="journal club, torino, phd, physics, university">
-
-    <!-- Change the HEX code for different colours -->
-    <meta name="theme-color" content="#1997ea">
-
     <!-- Title -->
     <title>PhD Torino - Journal Club</title>
-
-    <!-- CSS style sheets: load external larger css and inline only few custom
-        classes. If we need more complicated stuff, we should probably think
-        about writing an external file and load that as well: the more we write
-        the slower the page gets, however! N.B.: once we want to deploy the
-        new version we should change this with the Content Delivery Network
-        version in order to have a faster page.-->
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <style>
-        body {position: relative;} /* needed in order to have a responsive
-                                      navbar which follows the scroll position
-                                      and highlights the current section */
-        .card-img-top {width:100%; height:100%; border-top-left-radius: calc(.25rem - 1px); border-top-right-radius: calc(.25rem - 1px);}
-
-        /* These are the genuinely custom classes. Everything else is a
-           Bootstrap class. */
-        .next-event {perspective: 800px;}
-        .past-event {perspective: 800px;}
-        .caption-bg {opacity: 0.5;}
-        .caption-bg:hover {opacity: 0.8;} /* change opacity when the mouse is
-                                             over the caption */
-    </style>
-
-    <!-- This is only necessary if we want to test the Responsive Web App
-        capabilities. In general we should just keep it commented out. It
-        basically tells the browser where to find all the icons and images
-        needed to display properly on smartphones as a native app (i.e.: as if
-        it had been dowloaded from the Play Store/Apple Store).
-
-    <link rel="manifest" href="./manifest.json">
-
-    -->
-
-    <!-- Necessary scripts for the correct page display:
-
-        - JQuery: Javascript library used by the CSS file,
-        - Popper: it might be redundant (check!) unless we want to display
-          tooltips,
-        - Bootstrap: needed for CSS to work,
-        - Scrollreveal: necessary to have the scroll reveal animation on
-          elements in the page,
-        - Lazyload: vanilla Javascript for loading larger images after the
-          document has fully loaded,
-        - MathJax: needed to display LaTeX text (as in ArXiv.org),
-        - Manup: creates all the correct icons and splashscreens provided by
-          manifest.json: not needed right now,
-        - Main: main Javascript file where we can write custom code.
-        
-        'async' tag can be useful to load non-critical Javascript while the
-        page loads. E.g.: scrollreveal.js needs to be called right away, while
-        the CSS Javascript can be called later to have a faster loading page.
-    -->
-    <!-- JQuery -->
-    <script async src="./js/jquery.js"></script>
-
-    <!-- Popper -->
-    <script async src="./js/popper.js"></script>
-
-    <!-- Bootstrap -->
-    <script async src="./js/bootstrap.js"></script>
-
-    <!-- Scrollreveal: load istantly! -->
-    <script src="./js/scrollreveal.js"></script>
-
-    <!-- Lazyload 
-        Some notes:
-            - use "data-src" instead of "src" to specify where to find the
-            image,
-            - Javascript will swap "data-src" with "src" once the page is fully
-            loaded.
-    -->
-    <script async src="./js/lazyload.js"></script>
-
-    <!-- MathJax -->
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
-    </script>
-    <!-- Since it loads more resources, I could not find a way to host it
-        directly in some subdirectory: I will use its CDN version -->
-    <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML">
-    </script>
-
-    <!-- Manup: not needed unless we want to test the Responsive Web App behaviour
-
-    <script async src="./js/manup.js"></script>
-
-    -->
-
-    <!-- Main custom Javascript -->
-    <script src="./js/main.js"></script>
-
-    <!-- These are just few lines of inline code: no need to slow down the page
-        by introducing more Javascript file to include! -->
-    <script>
-        /* Here we call for the first time the ScrollReveal constructor in
-         * order to have it prepared. At the bottom of the page we tell it what
-         * to do, so that it does that only when the page is fully loaded!
-         */
-        window.sr = ScrollReveal(); // ScrollReveal --> constructor
-    </script>
+    
+    <!-- Include css -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Include jquery - needed to open/close the menue-->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 
-<!-- In order to build a navbar capable of following the scroll and
-    highlighting the active section properly, we need to set some values inside
-    the <body> tag: refer to Bootstrap instructions for more info -->
-<body data-spy="scroll" data-target="#phdnav" data-offset="0">
-
-<!-- This is the main title section -->
-<div class="jumbotron mb-0 py-3">
-    <div class="container text-center">
-        <!-- Title -->
-        <h1 class="text-uppercase mb-3">Torino Doctoral School in<br>Physics and Astrophysics</h1>
-        <hr>
-        <div class="row justify-content-center">
-            <div class="col-md-auto">
-                <img src="./images/campusnet_100x100.png" height="100" alt="Campusnet Logo">
+<!--Start slide show upon loading the page-->
+<body onload="StartSlideShow()">
+    
+    <!--Banner-->
+    <div id="banner">
+        <div id="pageWidth">
+            <div class='img'>
+            <img src="images/campusnet_banner.png" alt="University of Turin">
             </div>
-            <div class="col-md-auto">
-                <!-- Subtitle -->
-                <h3 class="text-uppercase mt-3">Graduate Students<br>Journal Club</h3>
+            <div class="title">
+                <div>
+                <h2>Torino doctoral school in physics  and astrophysics</h2>
+                <hr>
+                <h1>Graduate student journal club</h1>
+                </div>
+            </div>
+            <div class="end"></div>
+        </div>
+    </div>
+    
+    <!--Menue-->
+    <div id="menue_bar">
+        <button id="open_close">
+        </button>
+        <div id="menue">
+            <a href="#"><div class="point">
+                Home
+            </div></a>
+            <a href="#nextEvent"><div class="point">
+                Next Event
+            </div></a>
+            <a href="#pastEvents"><div class="point">
+                Past Events
+            </div></a>
+            <a href=" "><div class="point">
+                empty
+            </div>
+            <a href=" "><div class="point">
+                empty
+            </div></a>
+            <div class="end">
             </div>
         </div>
     </div>
-</div>
-
-<!-- Responsive navbar with sticky-top beahviour -->
-<nav id="phdnav" class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-    <a class="navbar-brand" href="#">
-        <img class="lazyload" data-src="./images/campusnet_32x32.png" src="./images/30.jpg" height="30" alt="Campusnet">
-        PhD Torino
-    </a>
-    <!-- This is necessary for smaller devices, where the navbar collapses into
-        a button in the top right part of the screen -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <!-- Navbar with links -->
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="nav nav-pills">
-            <li class="nav-item">
-                <a class="nav-link" href="#pic-carousel">Pictures </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#notices">Notice board </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#next">Next event(s) </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#calendar">Calendar </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#past">Past events </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#links">Links </a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
-<!-- This is the Bootstrap code for the slideshow (there are probably some
-    issues with chrome? Check!) -->
-<div id="pic-carousel" class="container mt-5 carousel slide" data-ride="carousel">
-    <!-- Some indicators to show which slide is currently displayed -->
-    <ol class="carousel-indicators">
-        <li data-target="#pic-carousel" data-slide-to="0" class="active">
-        <li data-target="#pic-carousel" data-slide-to="1">
-        <li data-target="#pic-carousel" data-slide-to="2">
-        <li data-target="#pic-carousel" data-slide-to="3">
-    </ol>
-
-    <!-- Carousel slides. Refer to Bootstrap documentation for more info. -->
-    <div class="carousel-inner">
-        <!-- Each of these blocks represent a slide which you can copy in order
-            to add more images. -->
-        <div class="carousel-item active">
-            <img class="d-block w-100 lazyload" data-src="./images/01_carousel.jpg" src="./images/1400.jpg" alt="Virasoro">
-            <div class="carousel-caption d-none d-md-block bg-dark rounded caption-bg">
-                <!-- Title (short) -->
-                <h5>Full blackboard</h5>
-                <!-- Subtitle (short) -->
-                <p>Some simple stringy computations...</p>
+    <!--Script to open and close menue for small window size-->
+    <!--Upon resize of the window always open (close) it for a large (small) window-->
+    <script type="text/javascript">
+        $("#open_close").click(function () { $("#menue").slideToggle(300); });
+        $( window ).resize(function() {
+                           if($(window).width()>1000){
+                           $("#menue").show(0);
+                           }else{
+                           $("#menue").hide(0);
+                           }
+                           
+                           });
+        </script>
+    
+    
+    <!--containers to have a maximal page width-->
+    <div id="pageWidth" >
+        <div id="content">
+            
+            <!--Picture gallery-->
+            <div class='galleryPictureBox'>
+               <div class='galleryPictureBoxTop'>
+                   <div class='galleryPictureContent'>
+                       
+                        <img class='galleryPicture' src="images/01_carousel.jpg">
+                        <img class='galleryPicture' src="images/02_carousel.jpg" style='opacity:0;'>
+                        <img class='galleryPicture' src="images/03_carousel.jpg" style='opacity:0;'>
+                        
+                        <div class='galleryTouch'></div>
+                        <img class='galleryButtonLeft' src='images/pictures_button_left.png'   onclick='gallery_last();'>
+                        <img class='galleryButtonRight' src='images/pictures_button_right.png' onclick='gallery_next();'>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="carousel-item">
-            <img class="d-block w-100 lazyload" data-src="./images/02_carousel.jpg" src="./images/1400.jpg" alt="PhD Students">
-            <div class="carousel-caption d-none d-md-block bg-dark rounded caption-bg">
-                <h5>The office</h5>
-                <p>A graduate selfie with cookies and coffe...</p>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img class="d-block w-100 lazyload" data-src="./images/03_carousel.jpg" src="./images/1400.jpg" alt="Talks">
-            <div class="carousel-caption d-none d-md-block bg-dark rounded caption-bg">
-                <h5>The talks</h5>
-                <p>Fancy titles...</p>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img class="d-block w-100 lazyload" data-src="./images/04_carousel.jpg" src="./images/1400.jpg" alt="Boson">
-            <div class="carousel-caption d-none d-md-block bg-dark rounded caption-bg">
-                <h5>The Higgs Boson</h5>
-                <p>There it is! Even in the plush version...</p>
-            </div>
-        </div>
-    </div>
+            
+            <!--Skripts to controll the picutre gallery - entirely self-written-->
+            <script type="text/javascript">
+                // Variables to store the current and last displayed picutre
+                var gallery_currentPicture = 0;
+                var gallery_lastPicture = 0;
+                // Function to go to the next picture and restart the slideshow
+                function gallery_next(){
+                    var images  = document.getElementsByClassName("galleryPicture");
+                    gallery_lastPicture    = gallery_currentPicture;
+                    gallery_currentPicture = (gallery_currentPicture  + 1) % (images.length);
+                    images[gallery_lastPicture].style.opacity = 0;
+                    images[gallery_currentPicture].style.opacity = 100;
+                    Slideshow_restartCounter++;
+                    window.setTimeout( function(){ Slideshow_restart(); }, 8000);
+                }
+                // Function to go to the last picture and restart the slideshow
+                function gallery_last(){
+                    var images  = document.getElementsByClassName("galleryPicture");
+                    gallery_lastPicture = gallery_currentPicture;
+                    gallery_currentPicture = (gallery_currentPicture  + -1 + images.length) % (images.length);
+                    images[gallery_lastPicture].style.opacity = 0;
+                    images[gallery_currentPicture].style.opacity = 100;
+                    Slideshow_restartCounter++;
+                    window.setTimeout( function(){ Slideshow_restart(); }, 8000);
+                }
+            
+            
+                // Variables to use always the last activation of the slide show's restart
+                // It disentangles slideshow and manual clicks
+                var Slideshow_restartCounter = 0;
+                var Slideshow_restartCheck = 0;
+                
+                // Function to move to next image in slide show
+                // Checkes wheter there where intermediate manual clicks
+                function Slideshow_restart(){
+                    Slideshow_restartCheck ++;
+                    if(Slideshow_restartCheck==Slideshow_restartCounter){
+                        Slideshow_restartCounter = 0;
+                        Slideshow_restartCheck = 0;
+                        gallery_next();
+                    }
+                }
+            
+                // Start slideshow (onload of body)
+                function StartSlideShow(){
+                    window.setTimeout( function(){ gallery_next(); }, 8000);
+                }
 
-    <!-- This is the code for the control arrows at the left and the right of
-        the slideshow (they seem to have some issues on Chrome but I am not
-        sure) -->
-    <a class="carousel-control-prev" href="#pic-carousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon bg-dark rounded" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#pic-carousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon bg-dark rounded" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
-
-<!-- This is the bulletin board showing current notices.
-
-    This is usually written in PHP: the notice is written in Markdown language
-    (GitHub flavoured) in a file called "message.md", then a PHP parser
-    translates it into HTML tags.
--->
-<div id="notices" class="container alert alert-primary mt-5 alert-dismissable fade show" role="alert">
-    <h2 class="alert-heading text-center">Notice board</h2>
-    <hr>
-    <blockquote>
-        <p>There are no public messages on the bulletin board for today.</p>
-        <p>Have a nice day and remember: you are awesome!</p>
-        <footer class="blockquote-footer">The webmasters</footer>
-    </blockquote>
-</div>
-
-<!-- Here we show the scheduled event(s) for the next week(s): it should always
-    stand out with respect to other text. This is usually read from a
-    MySQL/MariaDB database through PHP but here we show some dummy text. -->
-<div class="container mt-3">
-
-    <div id="next" class="container text-center mt-5 py-3">
-        <h2>Next event(s)</h2>
-        <hr>
-    </div>
-    <div class="next-event mt-3">
-        <article class="next-event-inner">
-        <div class="card col mb-3 py-3">
+                // Listeners to move forward and backward in touch screens
+                // FIXME: check that this works or remove
+                var startT = 0;
+                var startM = 0;
+                function startTouch(){
+                    var box = document.getElementsByClassName("galleryTouch")[0];
+                    box.addEventListener('touchstart', function(e){
+                                          startT = e.changedTouches[0].pageX;
+                                          e.preventDefault();
+                                          }, false)
+                    box.addEventListener('touchend', function(e){
+                                          var diff = startT - e.changedTouches[0].pageX;
+                                          if(diff>100){
+                                          gallery_next();
+                                          }
+                                          if(diff<-100){
+                                          gallery_last();
+                                          }
+                                          e.preventDefault();
+                                          }, false)
+                    box.addEventListener('mousedown', function(e){
+                                          startM = e.x;
+                                          }, false)
+                    box.addEventListener('mouseup', function(e){
+                                          var diff = e.x;
+                                          diff = startM - diff;
+                                          if(diff>100){
+                                          gallery_next();
+                                          }
+                                          if(diff<-100){
+                                          gallery_last();
+                                          }
+                                          }, false)
+                                          
+                }
+            </script>
+            
+            <!--Some example text-->
+            <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean malesuada, est ac luctus suscipit, ex velit faucibus odio, ac suscipit tellus ipsum ut mauris. Phasellus molestie mattis magna, ut tincidunt mauris lacinia eu. Integer a augue fringilla, condimentum nulla ac, semper velit. Maecenas iaculis, magna ut pretium elementum, justo sem lacinia risus, ac tempor eros mauris vitae dolor. Nunc non scelerisque ipsum, sit amet dapibus lectus. Pellentesque malesuada venenatis rutrum. Cras ut quam nibh. Pellentesque porttitor ut justo non fermentum. Vivamus at metus et nunc ultricies finibus. Sed sollicitudin mauris a ex pellentesque convallis.
+            </p><p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra condimentum auctor. Nam gravida est erat. Quisque vitae augue feugiat, varius ligula in, sagittis nulla. Morbi sit amet lacinia urna. Aliquam volutpat mauris non pellentesque sagittis. Mauris in lectus eu dolor tincidunt tristique at non erat. Donec aliquam lacus in ex ultricies fringilla. Sed eget turpis nibh. Ut purus magna, aliquam nec gravida in, feugiat vitae ante. Quisque pulvinar augue lorem, non consectetur ex malesuada ut. Ut aliquet est vitae ipsum eleifend, sed fermentum magna faucibus. Aliquam erat volutpat. Pellentesque ut enim quam.
+            </p>
+            
+            
+            <!--An event-->
+            <h1 id="nextEvent">Next event(s)</h1>
             <div class="card-body">
-                <h3 class="card-title">
+                <h1>
                     Lorem Ipsum
-                </h3>
-                <h4 class="card-subtitle">
+                </h1>
+                <h2>
                     Dolor sit amet
-                </h4>
-                <div class="abstract text-justify py-3">
-                    <p class="card-text lead">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit. Phasellus fringilla sem nec eros fringilla
-                        posuere. Maecenas ut justo placerat erat ultricies
-                        facilisis. In nibh turpis, imperdiet in lorem nec,
-                        feugiat ultricies felis. Nullam lobortis, magna eu
-                        tincidunt porta, felis magna tempor dolor, id aliquam
-                        libero sem quis sapien. Aenean at nisl tellus. Aliquam
-                        erat volutpat. Praesent nulla augue, fringilla et
-                        blandit a, consectetur ut ipsum. In tempus aliquet mi
-                        quis venenatis. Cras vel volutpat lacus. Nullam
-                        condimentum massa id risus suscipit aliquam.
+                </h2>
+                <div>
+                    <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing
+                    elit. Phasellus fringilla sem nec eros fringilla
+                    posuere. Maecenas ut justo placerat erat ultricies
+                    facilisis. In nibh turpis, imperdiet in lorem nec,
+                    feugiat ultricies felis. Nullam lobortis, magna eu
+                    tincidunt porta, felis magna tempor dolor, id aliquam
+                    libero sem quis sapien. Aenean at nisl tellus. Aliquam
+                    erat volutpat. Praesent nulla augue, fringilla et
+                    blandit a, consectetur ut ipsum. In tempus aliquet mi
+                    quis venenatis. Cras vel volutpat lacus. Nullam
+                    condimentum massa id risus suscipit aliquam.
                     </p>
                 </div>
-
                 <!-- This is the button to dowload the abstract in PDF format
-                    after it has been generated by a PHP file -->
-                <a class="btn btn-primary" href="#" target="_blank" role="button" rel="noopener">PDF</a>
-
-                <ul class="list-group list-group-flush mt-3">
-                    <li class="list-group-item"><b>Main reference:</b>
-                        <a href="#" target="_blank" rel="noopener">
+                 after it has been generated by a PHP file -->
+                <a>PDF</a>
+                <ul>
+                    <li><span>Main reference:</span>
+                        <a href="#" target="_blank">
                             Reference 1
                         </a>
                     </li>
-                    <li class="list-group-item"><b>Complementary reference:</b>
-                        <a href="#" target="_blank" rel="noopener">
+                    <li><span>Complementary reference:</span>
+                        <a href="#" target="_blank">
                             Reference 2
                         </a>
                     </li>
                 </ul>
-                <ul class="list-group list-group-flush mt-3">
-                    <li class="list-group-item"><b>Date:</b> 
+                <ul>
+                    <li><span>Date:</span>
                         January 1<sup>st</sup> 1970
                     </li>
-                    <li class="list-group-item"><b>Time:</b> 
+                    <li><span>Time:</span>
                         12:00 pm
                     </li>
-                    <li class="list-group-item"><b>Location:</b> 
+                    <li><span>Location:</span>
                         open space office (old building)
                     </li>
                 </ul>
             </div>
-        </div>
-        </article>
-    </div>
-
-    <!-- Here we show the calendar we can extract directly from Google: from
-        Calendar -> Settings -> Export calendar -> copy the code and paste.
-        Just remember to always insert into a responsive iframe tag (see
-        Bootstrap reference), add a title to the iframe and delete the
-        scrolling and border-frame values since they are no longer supported in
-        HTML5. Always remember to use validator.w3.org to check code
-        compliance. -->
-    <div id="calendar" class="container text-center mt-5">
-        <div class="py-3">
-            <h2>Calendar</h2>
-            <hr>
-        </div>
-        <div class="embed-responsive embed-responsive-4by3 calendar-frame">
-            <iframe title="journal-club-calendar" class="embed-responsive-item" src="https://calendar.google.com/calendar/b/1/embed?showTitle=0&amp;showCalendars=0&amp;height=600&amp;wkst=2&amp;hl=en_GB&amp;bgcolor=%23ffffff&amp;src=edu.unito.it_85c3lhbnljm4i0nua2500li1ps%40group.calendar.google.com&amp;color=%23853104&amp;ctz=Europe%2FRome" style="border:none" width="800" height="600"></iframe>
-        </div>
-    </div>
-
-    <!-- This is the same as for the scheduled events, but this is a record of
-        past meetings: we no longer need location and time indications! -->
-    <div class="container text-center mt-5 py-3">
-        <h2>Past events</h2>
-        <hr>
-    </div>
-    <div id="past" class="past-event mt-3">
-        <article class="past-event-inner">
-        <div class="card col mb-3 py-3">
+            
+            
+            <!--An event   As you see: All the classes and ids may be removed -->
+            <h1 id="pastEvents">Past events</h1>
             <div class="card-body">
-                <h3 class="card-title">
-                    Donec ante magna
-                </h3>
-                <h4 class="card-subtitle text-muted">
-                    Pulvinar Vestibulum
-                </h4>
+                <h1 class="card-title">
+                    Lorem Ipsum
+                </h1>
+                <h2 class="card-subtitle">
+                    Dolor sit amet
+                </h2>
                 <div class="abstract text-justify py-3">
-                    <p class="card-text">
-                        Donec ante magna, pulvinar vestibulum ex non, efficitur
-                        porttitor nunc. Sed nec bibendum justo. Nam augue sem,
-                        fringilla eleifend dolor in, auctor hendrerit lacus.
-                        Nunc varius massa ut risus dictum, et gravida ex
-                        laoreet. Nullam at massa a lacus ultrices pulvinar. Nam
-                        placerat neque quis nisl sagittis, fermentum elementum
-                        est porttitor. Aenean diam lectus, efficitur id enim
-                        nec, aliquet dictum felis. Pellentesque ut condimentum
-                        mauris. Sed ante felis, pulvinar ac mattis sit amet,
-                        volutpat at purus. Vestibulum tincidunt nunc at nisi
-                       vestibulum, vel auctor diam tempor. Fusce lectus tellus,
-                       ultricies at lectus at, viverra dapibus risus. Quisque
-                       magna diam, rhoncus eu quam sed, rhoncus interdum augue.
-                       Proin mi leo, condimentum eget accumsan non, finibus vel
-                       velit. Sed vitae iaculis massa. Aenean augue quam,
-                       luctus eget convallis vel, tincidunt nec arcu. Phasellus
-                       euismod ligula in magna dignissim facilisis. 
+                    <p class="card-text lead">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing
+                    elit. Phasellus fringilla sem nec eros fringilla
+                    posuere. Maecenas ut justo placerat erat ultricies
+                    facilisis. In nibh turpis, imperdiet in lorem nec,
+                    feugiat ultricies felis. Nullam lobortis, magna eu
+                    tincidunt porta, felis magna tempor dolor, id aliquam
+                    libero sem quis sapien. Aenean at nisl tellus. Aliquam
+                    erat volutpat. Praesent nulla augue, fringilla et
+                    blandit a, consectetur ut ipsum. In tempus aliquet mi
+                    quis venenatis. Cras vel volutpat lacus. Nullam
+                    condimentum massa id risus suscipit aliquam.
                     </p>
                 </div>
-
+                
+                <!-- This is the button to dowload the abstract in PDF format
+                 after it has been generated by a PHP file -->
                 <a class="btn btn-primary" href="#" target="_blank" role="button" rel="noopener">PDF</a>
-
+                
                 <ul class="list-group list-group-flush mt-3">
-                    <li class="list-group-item"><b>Main reference:</b>
+                    <li class="list-group-item"><span>Main reference:</span>
                         <a href="#" target="_blank" rel="noopener">
                             Reference 1
                         </a>
                     </li>
-                    <li class="list-group-item"><b>Complementary reference:</b>
+                    <li class="list-group-item"><span>Complementary reference:</span>
                         <a href="#" target="_blank" rel="noopener">
                             Reference 2
                         </a>
                     </li>
                 </ul>
                 <ul class="list-group list-group-flush mt-3">
-                    <li class=\"list-group-item\"><b>Date:</b> 
+                    <li class="list-group-item"><span>Date:</span>
                         January 1<sup>st</sup> 1970
+                    </li>
+                    <li class="list-group-item"><span>Time:</span>
+                        12:00 pm
+                    </li>
+                    <li class="list-group-item"><span>Location:</span>
+                        open space office (old building)
                     </li>
                 </ul>
             </div>
-        </div>
-        </article>
-    </div>
-</div>
-
-<!-- We finally show some useful links using the grid view of Bootstrap CSS
-    file: we need to instruct the CSS to display all the links in one line on
-    larger devices and two lines on smaller devices. -->
-<div class="container mt-5">
-    <div id="links" class="text-center py-3">
-        <h2>Useful links</h2>
-        <hr>
-    </div>
-
-    <div class="row useful-links">
-        <!-- Each one of these sections is a standalone card we can replicate
-            to display a new item -->
-        <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4">
-            <div class="card text-center">
-                <img class="card-img-top lazyload" height="250" data-src="./images/dottorato.jpg" src="./images/250.jpg" alt="Torino Graduate School">
-                <div class="card-body">
-                    <h5 class="card-title">Graduate School Home</h5>
-                    <a href="http://dottorato.ph.unito.it/" class="btn btn-primary" target="_blank" rel="noopener">Link </a>
+            <div class="card-body">
+                <h1 class="card-title">
+                    Lorem Ipsum
+                </h1>
+                <h2 class="card-subtitle">
+                    Dolor sit amet
+                </h2>
+                <div class="abstract text-justify py-3">
+                    <p class="card-text lead">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing
+                    elit. Phasellus fringilla sem nec eros fringilla
+                    posuere. Maecenas ut justo placerat erat ultricies
+                    facilisis. In nibh turpis, imperdiet in lorem nec,
+                    feugiat ultricies felis. Nullam lobortis, magna eu
+                    tincidunt porta, felis magna tempor dolor, id aliquam
+                    libero sem quis sapien. Aenean at nisl tellus. Aliquam
+                    erat volutpat. Praesent nulla augue, fringilla et
+                    blandit a, consectetur ut ipsum. In tempus aliquet mi
+                    quis venenatis. Cras vel volutpat lacus. Nullam
+                    condimentum massa id risus suscipit aliquam.
+                    </p>
                 </div>
+                
+                <!-- This is the button to dowload the abstract in PDF format
+                 after it has been generated by a PHP file -->
+                <a class="btn btn-primary" href="#" target="_blank" role="button" rel="noopener">PDF</a>
+                
+                <ul class="list-group list-group-flush mt-3">
+                    <li class="list-group-item"><span>Main reference:</span>
+                        <a href="#" target="_blank" rel="noopener">
+                            Reference 1
+                        </a>
+                    </li>
+                    <li class="list-group-item"><span>Complementary reference:</span>
+                        <a href="#" target="_blank" rel="noopener">
+                            Reference 2
+                        </a>
+                    </li>
+                </ul>
+                <ul class="list-group list-group-flush mt-3">
+                    <li class="list-group-item"><span>Date:</span>
+                        January 1<sup>st</sup> 1970
+                    </li>
+                    <li class="list-group-item"><span>Time:</span>
+                        12:00 pm
+                    </li>
+                    <li class="list-group-item"><span>Location:</span>
+                        open space office (old building)
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div id="footer">
+        <div id="pageWidth">
+            <div id="contact">
+            Department of Physics, University of Torino <br>
+            and INFN - Torino <br>
+            via P. Giuria 1 <br>
+            10125 Torino, Italy <br>
+            <br>
+            Contact: Riccardo Finotello <div class="mail"><div></div>riccardo.finotello@edu.unito.&#237;t</div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4">
-            <div class="card text-center">
-                <img class="card-img-top lazyload" height="250" data-src="./images/infn.jpg" src="./images/250.jpg" alt="INFN Sezione di Torino">
-                <div class="card-body">
-                    <h5 class="card-title">INFN Sezione di Torino</h5>
-                    <a href="https://www.to.infn.it/" class="btn btn-primary" target="_blank" rel="noopener">Link </a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4">
-            <div class="card text-center">
-                <img class="card-img-top lazyload" height="250" data-src="./images/arxiv.jpg" src="./images/250.jpg" alt="ArXiv.org">
-                <div class="card-body">
-                    <h5 class="card-title">ArXiv.org</h5>
-                    <a href="https://arxiv.org/" class="btn btn-primary" target="_blank" rel="noopener">Link </a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-4">
-            <div class="card text-center">
-                <img class="card-img-top lazyload" height="250" data-src="./images/inspire.jpg" src="./images/250.jpg" alt="INSPIRE-HEP">
-                <div class="card-body">
-                    <h5 class="card-title">InSPIRE</h5>
-                    <a href="https://inspirehep.net/" class="btn btn-primary" target="_blank" rel="noopener">Link </a>
-                </div>
-            </div>
-        </div>
     </div>
-</div>
-
-<!-- This is the footer with some acknowledgements -->
-<footer class="footer bg-primary mt-5 py-3 text-center">
-    <div class="text-white">
-        <i>Idea and Design by the students of the Graduate School in Physics
-            and Astrophysics</i> - 2018 -
-        <a class="text-white" href="https://gitlab.com/phd-torino-physics/jc-homepage" target="_blank" rel="noopener">
-            Source code
-        </a>
-    </div>
-</footer>
-
-<!-- This script enables the scroll reveal functionality for next and past
-    events, calendar and links -->
-<script>
-    sr.reveal('.next-event-inner');
-    sr.reveal('.past-event-inner');
-    sr.reveal('.calendar-frame');
-    sr.reveal('.useful-links');
-</script>
-
-<!-- This is the activation of the lazy load functionality: we simply activate
-    it once the page has been loaded and it will swap the "data-src" value with
-    "src" for each image -->
-<script>
-    window.addEventListener('load', function(event) {
-        lazyload();
-    });
-</script>
+    
 </body>
 
 </html>
