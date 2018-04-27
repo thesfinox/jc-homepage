@@ -27,7 +27,7 @@ hr {
 /* Always visible footer at the bottom of the page */
 #footer{
     position: relative;
-    margin-top: 50px;
+/*    margin-top: 50px;*/
     background-image: url("../images/bg/bg01.png");
     background-repeat: repeat;
     background-color:#618DB1;
@@ -118,6 +118,49 @@ hr {
     clear:both;
 }
 
+/***********************************/
+/* Links                           */
+/***********************************/
+
+#links{
+    background-color:#C8DEEE;
+    background-image: url("../images/bg/bg01.png");
+    background-repeat: repeat;
+    text-align:center;
+    color:#34638A;
+    margin-top: 50px;
+    padding-top: 20px;
+}
+#links a{
+    color:inherit;
+}
+#links .clear{
+    clear:both;
+}
+#links h1{
+    text-align:left;
+    color:black;
+}
+#links h2{
+    font-size:1em;
+}
+.link{
+    width:25%;
+    float:left;
+}
+.link:hover{
+    color:black;
+}
+.link img{
+    width:90%;
+    padding:5%;
+}
+.link img:hover{
+    width:96%;
+    padding:2%;
+}
+
+
 /*
     Special style for small window width
 */
@@ -127,6 +170,8 @@ hr {
         background-color:#618DB1;
         background-image: url("../images/bg/bg01.png");
         background-repeat: repeat;
+        overflow:hidden;
+        height:260px;
     }
     #menue .point{
         border-bottom-color:rgba(0,0,0,0.1);

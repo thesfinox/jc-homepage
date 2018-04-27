@@ -2,20 +2,70 @@
 <html lang="en">
 
 <head>
+    
+    <!-- Compatibility with Microsoft Edge -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+    <!-- Necessary for mobile-friendly view and scaling -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+            
+    <!-- Charset: use UTF-8 for wider compatibility -->
+    <meta charset="UTF-8">
+
+<!--
+    Just a few notes before we start:
+
+    IMAGES:
+    - make sure to upload and use only PNG (if strictly needed) or JPG
+    images,
+    - the latter should always be Progressive JPG and not too large in
+    size,
+    - we use a lazy loading utility in order to speed up page loading: we
+    can use some dummy images before we load the actual picture but please
+    make sure the dummies are no more than 10-20 kB in size,
+
+    HTML/CSS/JS:
+    - the actual webpage will be dynamic and written in PHP, therefore this
+    is just a static port of the original page with some ad hoc content,
+    - if you find a way to write such a huge CSS file in a better way, we
+    can think about switching to a custom file instead of using Bootstrap,
+
+    CODING ETIQUETTE:
+    - please remember to keep the indentation as consistent as possible
+    through the whole file,
+    - remember to comment appropriately every single bit of code you
+    change/use!!!
+    -->
+
+    <!-- Page metadata -->
+    <meta name="description" content="Torino - PhD programme in Physics - Journal Club">
+    <meta name="author" content="Riccardo Finotello, Michael Korsmeier">
+    <meta name="keywords" content="journal club, torino, phd, physics, university">
+
+
+    <!--Skripts to open and close the menue of the mobile verion - entirely self-written-->
+    <script src="./js/menue.js"></script>
+    <!--Skripts to controll the picutre gallery - entirely self-written-->
+    <script src="./js/gallery.js"></script>
+
 
     <!-- Title -->
     <title>PhD Torino - Journal Club</title>
-    
     <!-- Include css -->
     <link rel="stylesheet" href="css/main.css">
-    <!-- Include jquery - needed to open/close the menue-->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 
 <!--Start slide show upon loading the page-->
-<body onload="StartSlideShow()">
+<body onload="start()">
     
+    <script type="text/javascript">
+        function start(){
+            StartSlideShow();
+            start_menue();
+        }
+        </script>
+
     <!--Banner-->
     <div id="banner">
         <div id="pageWidth">
@@ -34,8 +84,8 @@
     </div>
     
     <!--Menue-->
-    <div id="menue_bar">
-        <button id="open_close">
+    <navbar id="menue_bar">
+        <button id="open_close" >
         </button>
         <div id="menue">
             <a href="#"><div class="point">
@@ -47,29 +97,28 @@
             <a href="#pastEvents"><div class="point">
                 Past Events
             </div></a>
-            <a href=" "><div class="point">
-                empty
+            <a href="#links"><div class="point">
+                Links
             </div>
-            <a href=" "><div class="point">
-                empty
+            <a href="#contact"><div class="point">
+                Contact
             </div></a>
             <div class="end">
             </div>
         </div>
-    </div>
-    <!--Script to open and close menue for small window size-->
-    <!--Upon resize of the window always open (close) it for a large (small) window-->
-    <script type="text/javascript">
-        $("#open_close").click(function () { $("#menue").slideToggle(300); });
-        $( window ).resize(function() {
-                           if($(window).width()>1000){
-                           $("#menue").show(0);
-                           }else{
-                           $("#menue").hide(0);
-                           }
-                           
-                           });
-        </script>
+    </navbar>
+    
+    <!--    Event listener to open and close menue-->
+    <script>
+        document.getElementById('open_close').onclick = function () {
+            if (shown==0){
+                show();
+            }else{
+                hide();
+            }
+        };
+    </script>
+    
     
     
     <!--containers to have a maximal page width-->
@@ -91,91 +140,6 @@
                     </div>
                 </div>
             </div>
-            
-            <!--Skripts to controll the picutre gallery - entirely self-written-->
-            <script type="text/javascript">
-                // Variables to store the current and last displayed picutre
-                var gallery_currentPicture = 0;
-                var gallery_lastPicture = 0;
-                // Function to go to the next picture and restart the slideshow
-                function gallery_next(){
-                    var images  = document.getElementsByClassName("galleryPicture");
-                    gallery_lastPicture    = gallery_currentPicture;
-                    gallery_currentPicture = (gallery_currentPicture  + 1) % (images.length);
-                    images[gallery_lastPicture].style.opacity = 0;
-                    images[gallery_currentPicture].style.opacity = 100;
-                    Slideshow_restartCounter++;
-                    window.setTimeout( function(){ Slideshow_restart(); }, 8000);
-                }
-                // Function to go to the last picture and restart the slideshow
-                function gallery_last(){
-                    var images  = document.getElementsByClassName("galleryPicture");
-                    gallery_lastPicture = gallery_currentPicture;
-                    gallery_currentPicture = (gallery_currentPicture  + -1 + images.length) % (images.length);
-                    images[gallery_lastPicture].style.opacity = 0;
-                    images[gallery_currentPicture].style.opacity = 100;
-                    Slideshow_restartCounter++;
-                    window.setTimeout( function(){ Slideshow_restart(); }, 8000);
-                }
-            
-            
-                // Variables to use always the last activation of the slide show's restart
-                // It disentangles slideshow and manual clicks
-                var Slideshow_restartCounter = 0;
-                var Slideshow_restartCheck = 0;
-                
-                // Function to move to next image in slide show
-                // Checkes wheter there where intermediate manual clicks
-                function Slideshow_restart(){
-                    Slideshow_restartCheck ++;
-                    if(Slideshow_restartCheck==Slideshow_restartCounter){
-                        Slideshow_restartCounter = 0;
-                        Slideshow_restartCheck = 0;
-                        gallery_next();
-                    }
-                }
-            
-                // Start slideshow (onload of body)
-                function StartSlideShow(){
-                    window.setTimeout( function(){ gallery_next(); }, 8000);
-                }
-
-                // Listeners to move forward and backward in touch screens
-                // FIXME: check that this works or remove
-                var startT = 0;
-                var startM = 0;
-                function startTouch(){
-                    var box = document.getElementsByClassName("galleryTouch")[0];
-                    box.addEventListener('touchstart', function(e){
-                                          startT = e.changedTouches[0].pageX;
-                                          e.preventDefault();
-                                          }, false)
-                    box.addEventListener('touchend', function(e){
-                                          var diff = startT - e.changedTouches[0].pageX;
-                                          if(diff>100){
-                                          gallery_next();
-                                          }
-                                          if(diff<-100){
-                                          gallery_last();
-                                          }
-                                          e.preventDefault();
-                                          }, false)
-                    box.addEventListener('mousedown', function(e){
-                                          startM = e.x;
-                                          }, false)
-                    box.addEventListener('mouseup', function(e){
-                                          var diff = e.x;
-                                          diff = startM - diff;
-                                          if(diff>100){
-                                          gallery_next();
-                                          }
-                                          if(diff<-100){
-                                          gallery_last();
-                                          }
-                                          }, false)
-                                          
-                }
-            </script>
             
             <!--Some example text-->
             <p>
@@ -346,15 +310,59 @@
         </div>
     </div>
     
+    
+    <div id="links">
+        <div id="pageWidth" >
+            
+            <!-- We finally show some useful links using the grid view of Bootstrap CSS
+             file: we need to instruct the CSS to display all the links in one line on
+             larger devices and two lines on smaller devices. -->
+            <h1>Useful links</h1>
+            
+                <a href="http://dottorato.ph.unito.it/" target="_blank">
+                    <div class="link">
+                        <img  src="./images/dottorato.jpg" alt="Torino Graduate School">
+                        <h2> Graduate School Home </h2>
+                    </div><!--  class="link" -->
+                </a>
+                <a href="https://www.to.infn.it/" target="_blank">
+                    <div class="link">
+                        <img  src="./images/infn.jpg" alt="INFN Sezione di Torino">
+                        <h2> INFN Sezione di Torino </h2>
+                    </div><!--  class="link" -->
+                </a>
+                <a href="https://arxiv.org/" target="_blank">
+                    <div class="link">
+                        <img  src="./images/arxiv.jpg" alt="ArXiv.org">
+                        <h2> ArXiv.org </h2>
+                    </div><!--  class="link" -->
+                </a>
+                <a href="https://inspirehep.net/" target="_blank">
+                    <div class="link">
+                        <img  src="./images/inspire.jpg" alt="INSPIRE-HEP">
+                        <h2> INSPIRE-HEP </h2>
+                    </div><!--  class="link" -->
+                </a>
+                <div class="clear"></div>
+
+            </div> <!--  id="links" -->
+            
+    </div>
+    
+    
     <div id="footer">
         <div id="pageWidth">
             <div id="contact">
-            Department of Physics, University of Torino <br>
+            Department of Physics<br>
+            University of Torino
             and INFN - Torino <br>
             via P. Giuria 1 <br>
             10125 Torino, Italy <br>
             <br>
-            Contact: Riccardo Finotello <div class="mail"><div></div>riccardo.finotello@edu.unito.&#237;t</div>
+            Contact: <br>
+            <div style="min-width:150px; display:inline-block;">Riccardo Finotello</div> <div class="mail"><div></div>riccardo.finotello@edu.unito.&#237;t</div>
+            <br>
+            <div style="min-width:150px; display:inline-block;">Michael Korsmeier</div> <div class="mail"><div></div>michael.korsmeier@to.infn.&#237;t</div>
             </div>
         </div>
     </div>
