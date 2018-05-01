@@ -151,7 +151,7 @@ if ($DB_DCONN->connect_errno) {
 </div>
 
 <!-- Navbar -->
-<navbar id="menue_bar">
+<div id="menue_bar">
     <button id="open_close" role="button" aria-label="Navigation button">
     </button>
     <div id="menue">
@@ -166,14 +166,14 @@ if ($DB_DCONN->connect_errno) {
         </div></a>
         <a href="#links"><div class="point">
             Links
-        </div>
+        </div></a>
         <a href="#contact"><div class="point">
             Contact
         </div></a>
         <div class="end">
         </div>
     </div>
-</navbar>
+</div>
 
 <!-- Containers to have a maximal page width -->
 <div class="pageWidth" >
