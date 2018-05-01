@@ -1,7 +1,7 @@
 'use strict';
 
-var cacheno = 2;
-var cacheno_old = 1;
+var cacheno = 3;
+var cacheno_old = 2;
 var cachename = 'journal-club-v' + cacheno;
 var cachename_old = 'journal-club-v' + cacheno_old;
 
@@ -9,11 +9,10 @@ var cachefiles = [
     './',
     './index.php',
     './manifest.json',
-    './js/lazyload.min.js',
+    './js/gallery.min.js',
     './js/main.min.js',
-    './js/manup.min.js',
-    './notices/message.md',
-    './notices/Parsedown.php',
+    './js/menue.min.js',
+    './images/campusnet_banner.png',
     './images/01_carousel.jpg',
     './images/02_carousel.jpg',
     './images/03_carousel.jpg',
@@ -22,10 +21,14 @@ var cachefiles = [
     './images/dottorato.jpg',
     './images/infn.jpg',
     './images/inspire.jpg',
-    './images/campusnet.png',
-    './images/30.jpg',
-    './images/250.jpg',
-    './images/1400.jpg'
+    './images/pictures_button_left.png',
+    './images/pictures_button_right.png',
+    './images/bg/bg01.png',
+    './images/bg/bg02.png',
+    './images/bg/bg03.png',
+    './css/main.min.css',
+    './bulletin/message.md',
+    './bulletin/Parsedown.php'
 ];
 
 self.addEventListener('install', function(e) {

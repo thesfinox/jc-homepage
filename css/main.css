@@ -1,0 +1,451 @@
+/**************************************/
+/* General Style of body and content  */
+/**************************************/
+
+body{
+    margin: 0px;
+    text-align: justify;
+    font-family: Arial;
+    background-image: url("../images/bg/bg01.png");
+    background-repeat: repeat;
+}
+#content{
+    clear: both;
+    min-height: 100vh;
+}
+/* Admin mode */
+.admin {
+    margin: 10pt;
+}
+/* Centered text for titles */
+.section-header {
+    text-align: center;
+    text-transform: uppercase;
+}
+/* Nice horizontal line */
+hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-style: inset;
+    border-width: 1px;
+    border-color:rgba(0,0,0,0.3);
+}
+/* Always visible footer at the bottom of the page */
+#footer{
+    position: relative;
+/*    margin-top: 50px;*/
+    background-image: url("../images/bg/bg01.png");
+    background-repeat: repeat;
+    background-color:#618DB1;
+    min-height:100px;
+    padding: 1%;
+}
+/* Contact field in the footer */
+#contact{
+    font-size: small;
+    padding-left:2%;
+    line-height:1em;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.contact-name {
+    min-width:150px;
+    display:inline-block;
+}
+
+.mail{
+    position:relative;
+    display:inline-block;
+    color:#34638A;
+}
+.mail div{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+
+.gitlab-page {
+    margin-top: 1%;
+}
+
+/***********************/
+/* Style of the Menue  */
+/***********************/
+
+/*  Always visible menue bar at the top of the page
+    Then the menue itself might be displayed on the bar
+    or opend from the bar depending on the window width  */
+#menue_bar{
+    top:0px;
+    margin: 0 auto;
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    background-color:#34638A;
+    background-image: url("../images/bg/bg01.png");
+    background-repeat: repeat;
+    z-index:1;
+}
+#menue a{
+    text-decoration:none;
+    color:black;
+}
+/* Single buttons in the menue */
+#menue .point{
+    height: 50px;
+    line-height: 50px;
+}
+#menue .point:hover{
+    color:white;
+    background-color:rgba(0,0,0,0.3);
+    background-image: url("../images/bg/bg01.png");
+    background-repeat: repeat;
+}
+
+/***********************************/
+/* Banner with page name and logo  */
+/***********************************/
+#banner{
+    background-image: url("../images/bg/bg01.png");
+    background-repeat: repeat;
+    background-color:#618DB1;
+    width: 100%;
+    padding-top:50px;
+}
+#banner .img{
+    float:right;
+    height:100%;
+}
+#banner img{
+    display:inline-block;
+    vertical-align:middle;
+    width:90%;
+}
+#banner .title{
+    float:left;
+    text-align:center;
+}
+#banner .end{
+    width:100%;
+    clear:both;
+}
+
+/***********************************/
+/* Bulletin board                  */
+/***********************************/
+
+.bulletin {
+    text-align: center;
+    font-size: large;
+    padding: 5pt;
+}
+
+.bulletin .sign {
+    text-align: right;
+    font-size: initial;
+    font-style: italic;
+}
+
+/***********************************/
+/* Calendar frame                  */
+/***********************************/
+
+.calendar {
+    position: relative;
+    height: 0;
+    padding-bottom: 75%;
+}
+
+.calendar iframe {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/***********************************/
+/* Links                           */
+/***********************************/
+
+#links{
+    width: 100%;
+    background-color:#C8DEEE;
+    background-image: url("../images/bg/bg01.png");
+    background-repeat: repeat;
+    text-align:center;
+    color:#34638A;
+    margin-top: 50px;
+    padding-top: 20px;
+}
+#links a{
+    color:inherit;
+}
+#links .clear{
+    clear:both;
+}
+#links h1{
+    text-align:center;
+    color:black;
+}
+#links h2{
+    font-size:1em;
+}
+.link{
+    width:25%;
+    float:left;
+}
+.link:hover{
+    color:black;
+}
+.link img{
+    width:90%;
+    padding:5%;
+}
+.link img:hover{
+    width:96%;
+    padding:2%;
+}
+
+
+/*
+    Special style for small window width
+*/
+@media screen and (max-width: 1000px) {
+    /* Menue displayed upon opening */
+    #menue{
+        background-color:#618DB1;
+        background-image: url("../images/bg/bg01.png");
+        background-repeat: repeat;
+        overflow:hidden;
+        height:260px;
+    }
+    #menue .point{
+        border-bottom-color:rgba(0,0,0,0.1);
+        border-bottom-width:1px;
+        border-bottom-style:solid;
+        border-top-color:rgba(0,0,0,0.1);
+        border-top-width:1px;
+        border-top-style:solid;
+    }
+    /* Fixed size adjusted with window width */
+    #banner{
+        height: 25vw;
+    }
+    #banner .img{
+        width:30%;
+        line-height:100%;
+    }
+    #banner .title{
+        padding-top:2vw;
+        width:70%;
+    }
+    #banner .title h1{
+        font-size:4vw;
+    }
+    #banner .title h2{
+        font-size:2.5vw;
+    }
+    /* Button to open and close the menue */
+    #open_close{
+        float:right;
+        margin-top:10px;
+        margin-right:30px;
+        width:50px;
+        height:30px;
+        background-color:#163D5C;
+        border-color:black;
+        border-width:3px;
+        border-radius:7px;
+    }
+    #menue_bar .end{
+        width:100%;
+        clear:right;
+    }
+    #menue{
+        position:fixed;
+        top:50px;
+        width: 100%;
+    }
+    #menue .point{
+        padding-left:50px;
+    }
+    #content{
+        padding: 2%;
+    }
+}
+
+/*
+ Special style for large window width
+ */
+@media screen and (min-width: 1001px) {
+    /* Maxmal page width of 1000px centered on page */
+    .pageWidth{
+        margin: auto;
+        max-width: 1000px;
+    }
+    /*  Button to open and close the menue
+        Only needed for small width - remove from sight!*/
+    #open_close{
+        top: -50px;
+        position:fixed;
+        width:0;
+        height:0;
+        background: transparent;
+        border: none !important;
+    }
+    /* Fixed size banner */
+    #banner{
+        height: 200px;
+    }
+    #banner .img{
+        width:270px;
+        line-height:200px;
+    }
+    #banner .title{
+        width:720px;
+        padding-top:20px;
+    }
+    /* Menue displayed ontop of the menue_bar */
+    #menue{
+        max-width: 1000px;
+        margin: 0 auto;
+        top:0px;
+    }
+    #menue .point{
+        float:left;
+        width:200px;
+        text-align:center;
+    }
+    #menue .end{
+        width:100%;
+        clear:left;
+    }
+}
+
+/***************/
+/* Event Style */
+/***************/
+
+.card-body{
+    width:98%;
+    margin-top:15px;
+    margin-bottom:15px;
+    padding-left: 2%;
+    padding-right:2%;
+    border-style:solid;
+    border-color:rgba(0,0,0,0.2);
+    border-width:1px;
+    border-radius:10px;
+    background-color:#C8DEEE;
+    background-image: url("../images/bg/bg01.png");
+    background-repeat: repeat;
+}
+.card-body h1{
+    text-align: left;
+    font-size:25px;
+}
+.card-body h2{
+    text-align: left;
+    font-size:20px;
+}
+.card-body a{
+    padding: 7px 15px 7px 15px;
+    border-style:solid;
+    border-color:rgba(0,0,0,0.8);
+    border-width:1px;
+    border-radius:7px;
+    background-color:#34638A;
+    color:white;
+    text-decoration:none;
+}
+.card-body ul{
+    text-align:left;
+    list-style-type: none;
+    padding-left:0;
+}
+.card-body li span{
+    display:inline-block;
+    min-width:100px;
+    font-weight:bold;
+}
+.card-body li a{
+    padding:0px;
+    border-style:none;
+    background:none;
+    color:#34638A;
+    text-decoration:underline;
+    text-decoration-style: dotted;
+    padding-left:0;
+}
+.card-body .next-abstract {
+    font-size: large;
+}
+
+/*****************/
+/*Picture Gallery*/
+/*****************/
+
+.galleryPicture{
+    position: absolute;
+    top:-100%; left:0; right: 0; bottom:-100%;
+    margin: auto;
+    width:100%;
+}
+
+.galleryPictureBox{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    width: 100%;        /* desired width */
+}
+.galleryPictureBox:before{
+    content: "";
+    display: block;
+    padding-top: 50%;
+}
+.galleryPictureContent{
+    position:  absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.1);
+    overflow:hidden;
+}
+
+.galleryButtonLeft{
+    position: absolute;
+    top:0; left:0;
+    height:100%;
+    opacity: 0.1;
+}
+
+.galleryButtonRight{
+    position: absolute;
+    top:0; right: 0;
+    height:100%;
+    opacity: 0.1;
+}
+
+.galleryButtonLeft:hover{
+    background-color: rgba(0,0,0,0.2);
+    opacity: 1;
+}
+.galleryButtonRight:hover{
+    background-color: rgba(0,0,0,0.2);
+    opacity: 1;
+}
+
+.galleryTouch{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}

@@ -1,8 +1,3 @@
-/* This is needed to activate the Service Worker for offline use and the
- * Progressive Web App capabilities. We should keep this deactivated unless we
- * specifically want to test it.
-
-
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
         navigator.serviceWorker.register('./sw.js').then(function(reg) {
@@ -12,11 +7,6 @@ if ('serviceWorker' in navigator) {
         })
     });
 }
-
- */
-
-/* This enables the administration button to generate the PDF's for abstract
- * and title export. Unless we have a PHP capable server this is useless.
 
 function admin(e) {
     var key = window.event ? e.keyCode : e.which;
@@ -38,5 +28,3 @@ function admin(e) {
 
 if (document.attachEvent) document.attachEvent('onkeydown', admin);
 else document.addEventListener('keydown', admin);
-
- */
