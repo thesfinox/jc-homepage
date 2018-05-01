@@ -13,6 +13,15 @@ body{
     clear: both;
     min-height: 100vh;
 }
+/* Admin mode */
+.admin {
+    margin: 10pt;
+}
+/* Centered text for titles */
+.section-header {
+    text-align: center;
+    text-transform: uppercase;
+}
 /* Nice horizontal line */
 hr {
     display: block;
@@ -31,16 +40,21 @@ hr {
     background-image: url("../images/bg/bg01.png");
     background-repeat: repeat;
     background-color:#618DB1;
-    width: 100%;
-    height:200px;
-    line-height:200px;
+    min-height:100px;
+    padding: 1%;
 }
 /* Contact field in the footer */
 #contact{
-    margin-left:50px;
+    font-size: small;
+    padding-left:2%;
     line-height:1em;
     display: inline-block;
     vertical-align: middle;
+}
+
+.contact-name {
+    min-width:150px;
+    display:inline-block;
 }
 
 .mail{
@@ -54,6 +68,10 @@ hr {
     left:0;
     width:100%;
     height:100%;
+}
+
+.gitlab-page {
+    margin-top: 1%;
 }
 
 /***********************/
@@ -119,10 +137,45 @@ hr {
 }
 
 /***********************************/
+/* Bulletin board                  */
+/***********************************/
+
+.bulletin {
+    text-align: center;
+    font-size: large;
+    padding: 5pt;
+}
+
+.bulletin .sign {
+    text-align: right;
+    font-size: initial;
+    font-style: italic;
+}
+
+/***********************************/
+/* Calendar frame                  */
+/***********************************/
+
+.calendar {
+    position: relative;
+    height: 0;
+    padding-bottom: 75%;
+}
+
+.calendar iframe {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/***********************************/
 /* Links                           */
 /***********************************/
 
 #links{
+    width: 100%;
     background-color:#C8DEEE;
     background-image: url("../images/bg/bg01.png");
     background-repeat: repeat;
@@ -138,7 +191,7 @@ hr {
     clear:both;
 }
 #links h1{
-    text-align:left;
+    text-align:center;
     color:black;
 }
 #links h2{
@@ -183,7 +236,7 @@ hr {
     }
     /* Fixed size adjusted with window width */
     #banner{
-        height: 20vw;
+        height: 25vw;
     }
     #banner .img{
         width:30%;
@@ -197,7 +250,7 @@ hr {
         font-size:4vw;
     }
     #banner .title h2{
-        font-size:2vw;
+        font-size:2.5vw;
     }
     /* Button to open and close the menue */
     #open_close{
@@ -224,7 +277,7 @@ hr {
         padding-left:50px;
     }
     #content{
-        padding: 50px;
+        padding: 2%;
     }
 }
 
@@ -233,8 +286,8 @@ hr {
  */
 @media screen and (min-width: 1001px) {
     /* Maxmal page width of 1000px centered on page */
-    #pageWidth{
-        margin: 0 auto;
+    .pageWidth{
+        margin: auto;
         max-width: 1000px;
     }
     /*  Button to open and close the menue
@@ -281,10 +334,9 @@ hr {
 /***************/
 
 .card-body{
-    width:92%;
-    margin-left:  2%;
-    margin-right: 2%;
-    margin-bottom:30px;
+    width:98%;
+    margin-top:15px;
+    margin-bottom:15px;
     padding-left: 2%;
     padding-right:2%;
     border-style:solid;
@@ -296,9 +348,11 @@ hr {
     background-repeat: repeat;
 }
 .card-body h1{
+    text-align: left;
     font-size:25px;
 }
 .card-body h2{
+    text-align: left;
     font-size:20px;
 }
 .card-body a{
@@ -309,10 +363,10 @@ hr {
     border-radius:7px;
     background-color:#34638A;
     color:white;
-    font-style:bold;
     text-decoration:none;
 }
 .card-body ul{
+    text-align:left;
     list-style-type: none;
     padding-left:0;
 }
@@ -330,7 +384,9 @@ hr {
     text-decoration-style: dotted;
     padding-left:0;
 }
-
+.card-body .next-abstract {
+    font-size: large;
+}
 
 /*****************/
 /*Picture Gallery*/

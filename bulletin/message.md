@@ -1,11 +1,16 @@
-### This is a title!
+# Restyling!
 
-You can write your message here in GitHub flavoured Markdown: it will be parsed
-in HTML through Parsedown.php.
+After the first preview our new web page underwent a huge restyling by
+**Michael** who wrote from scratch the CSS style file and some Javascripts.
+This way we should be able to overcome possible issues with the display on
+Google Chrome.
 
-Just remember:
+You can still find all the **previous content**, such as scheduled talks, calendar
+and abstracts (with LaTeX support, using [Mathjax](https://www.mathjax.org/)).
+You can also install the **web app** simply by choosing _"Add to your homescreen"_ on
+your device: the page will behave as a **standalone app**.
 
-- the longer the message, the less it will be read,
-- do not use less than 3\# for the title or it will be too large,
-- please try to convey as much information as possible in just a few small
-  sentences!
+The app can be used **offline** as well, allowing to see the updated schedule.
+If cannot find the newest version of the talks, simply reload the page.
+
+We wish you all the best.
