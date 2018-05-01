@@ -82,8 +82,6 @@ if ($DB_DCONN->connect_errno) {
     <style>
         body {position: relative;}
         .cow {line-height:0.65;}
-        .next-event {perspective: 800px;}
-        .past-event {perspective: 800px;}
     </style>
 
     <!-- Scripts to open and close the menu of the mobile verion -->
