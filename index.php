@@ -277,6 +277,13 @@ if ($DB_DCONN->connect_errno) {
                                     echo "</ul>";
 
                                 }
+                                
+                                if ($attachment = $row["PROCEEDING"]) {
+
+                                    echo "<ul>";
+                                        echo "<li><b>Attachment(s):</b> <a href=\"" . $attachment . "\" target=\"_blank\" rel=\"noopener noreferrer\">" . $row["PROCEEDING_TXT"] . "</a></li>";
+                                    echo "</ul>";
+                                }
 
                                 $date = date("l j\<\s\u\p\>S\<\/\s\u\p\> F Y", strtotime($row["DATE"]));
                                 $time = date("g:i a", strtotime($row["TIME"]));
@@ -367,6 +374,13 @@ if ($DB_DCONN->connect_errno) {
                                 echo "</ul>";
 
                             }
+                            
+                            if ($attachment = $row["PROCEEDING"]) {
+
+                                    echo "<ul>";
+                                        echo "<li><b>Attachment(s):</b> <a href=\"" . $attachment . "\" target=\"_blank\" rel=\"noopener noreferrer\">" . $row["PROCEEDING_TXT"] . "</a></li>";
+                                    echo "</ul>";
+                                }
 
                             $date = date("l j\<\s\u\p\>S\<\/\s\u\p\> F Y", strtotime($row["DATE"]));
 
