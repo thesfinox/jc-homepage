@@ -1,30 +1,5 @@
 <!DOCTYPE html>
 
-<?php
-
-$DB_SNAME = "";
-$DB_SPORT = "";
-$DB_UNAME = "";
-$DB_UPSSW = "";
-$DB_DNAME = "";
-$DB_TABLE = "";
-
-$DB_DCONN = new mysqli($DB_SNAME, $DB_UNAME,
-                       $DB_UPSSW, $DB_DNAME,
-                       $DB_SPORT);
-
-if ($DB_DCONN->connect_errno) {
-    
-    echo "Failed to connect to MySQL: (" .
-         $DB_DCONN->connect_errno . 
-         ") " . 
-         $DB_DCONN->connect_error;
-
-}
-
-?>
-
-
 <html lang="en">
 
 <head>
@@ -199,121 +174,49 @@ if ($DB_DCONN->connect_errno) {
         <h1 class="section-header">Notice board</h1>
         <hr>
         <!-- PHP driven notice -->
-        <?php
-            $file = './bulletin/message.md';
-            if (file_exists($file) and filesize($file)) {
-
-                include './bulletin/Parsedown.php';
-
-                $message = file_get_contents($file);
-                $parsedown = new Parsedown();
-                $parsedown->setSafeMode(true);
-
-                echo "<article class=\"bulletin\">";
-                    echo $parsedown->text($message);
-                    echo "<p class=\"sign\">&#126;The webmasters&#126;</p>";
-                echo "</article>";
-            }
-            else {
-                echo "<article class=\"bulletin\">";
-                    echo "<p>There are no public messages on the bulletin board for today.</p>";
-                    echo "<p>Have a nice day and remember: you are awesome!</p>";
-                    echo "<p class=\"sign\">&#126;The webmasters&#126;</p>";
-                echo "</article>";
-            }
-        ?>
-        
+        <article class="bulletin"><h1>Restyling!</h1>
+           <p>After the first preview our new web page underwent a huge restyling by <strong>Michael</strong> who wrote from scratch the CSS style file and some Javascripts. This way we should be able to overcome possible issues with the display on Google Chrome.</p>
+           <p>You can still find all the <strong>previous content</strong>, such as scheduled talks, calendar and abstracts (with LaTeX support, using <a href="https://www.mathjax.org/">Mathjax</a>). You can also install the <strong>web app</strong> simply by choosing <em>"Add to your homescreen"</em> on your device: the page will behave as a <strong>standalone app</strong>.</p>
+           <p>The app can be used <strong>offline</strong> as well, allowing to see the updated schedule. If you cannot find the newest version of the talks, simply reload the page.</p>
+           <p>We wish you all the best.</p>
+           <p class="sign">&#126;The webmasters&#126;</p>
+        </article>        
         <!-- Forthcoming events -->
         <h1 id="nextEvent" class="section-header">Next event(s)</h1>
         <hr>
-        <?php
-
-            $DB_QUERY = "SELECT * FROM " . $DB_TABLE . " WHERE DATE >= CURDATE() ORDER BY DATE";
-            $JC_TABLE = $DB_DCONN->query($DB_QUERY);
-
-            if ($JC_TABLE->num_rows > 0) {
-
-                while ($row = $JC_TABLE->fetch_assoc()) {
-
-                    echo "<div class=\"card-body\">";
-                    echo "<article>";
-                        echo "<div>";
-                            echo "<div>";
-                                echo "<h1>";
-                                    echo $row["TITLE"];
-                                echo "</h1>";
-                                echo "<h2>";
-                                    echo "<strong>" . $row["SPEAKER"] . "</strong>";
-                                echo "</h2>";
-
-                                if ($abstract = $row["ABSTRACT"]) {
-
-                                    echo "<div>";
-                                        echo "<p class=\"next-abstract\">" . $abstract . "</p>";
-                                    echo "</div>";
-
-                                    echo "<form action=\"./abstract/abstract.php\" target=\"_blank\" method=\"post\" enctype=\"text/plain\">";
-                                        echo "<input type=\"hidden\" name=\"autore\" value=\"" . $row["SPEAKER"] . "\">";
-                                        echo "<input type=\"hidden\" name=\"titolo\" value=\"" . $row["TITLE"] . "\">";
-                                        echo "<input type=\"hidden\" name=\"data\" value=\"" . $row["DATE"] . "\">";
-                                        echo "<input type=\"hidden\" name=\"sommario\" value=\"" . $abstract . "\">";
-                                        echo "<input class=\"admin\" style=\"display:none;\" type=\"submit\" name=\"PDF\" value=\"PDF-generate\">";
-                                    echo "</form>";
-
-                                    echo "<a href=\"./abstract/abstract/" . $row["DATE"] . ".pdf\" target=\"_blank\" role=\"button\" rel=\"noopener noreferrer\">PDF</a>";
-
-                                }
-
-                                if ($reference = $row["REFERENCE"]) {
-
-                                    echo "<ul>";
-                                        echo "<li><strong>Main reference:</strong> <a href=\"" . $reference . "\" target=\"_blank\" rel=\"noopener noreferrer\">" . $row["REFERENCE_TXT"] . "</a></li>";
-                                
-                                    if ($reference2 = $row["REFERENCE2"]) {
-
-                                        echo "<li><strong>Other reference:</strong> <a href=\"" . $reference2 . "\" target=\"_blank\" rel=\"noopener noreferrer\">" . $row["REFERENCE2_TXT"] . "</a></li>";
-                                    }
-
-                                    echo "</ul>";
-
-                                }
-                                
-                                if ($attachment = $row["PROCEEDING"]) {
-
-                                    echo "<ul>";
-                                        echo "<li><strong>Attachment(s):</strong> <a href=\"" . $attachment . "\" target=\"_blank\" rel=\"noopener noreferrer\">" . $row["PROCEEDING_TXT"] . "</a></li>";
-                                    echo "</ul>";
-                                }
-
-                                $date = date("l j\<\s\u\p\>S\<\/\s\u\p\> F Y", strtotime($row["DATE"]));
-                                $time = date("g:i a", strtotime($row["TIME"]));
-
-                                echo "<ul>";
-                                    echo "<li><strong>Date:</strong> " . $date . "</li>";
-                                    echo "<li><strong>Time:</strong> " . $time . "</li>";
-                                    echo "<li><strong>Location:</strong> " . $row["PLACE"] . "</li>";
-                                echo "</ul>";
-                            echo "</div>";
-                        echo "</div>";
-                    echo "</article>";
-                    echo "</div>";
-                }
-
-            }
-            else {
-                echo "<div class=\"card-body\">";
-                    echo "<p>There are no seminars scheduled, so here is a thinking cow:</p>";
-                    echo "<div>";
-                        $text = shell_exec("/usr/games/fortune -n400 -s | /usr/games/cowthink -W25");
-                        echo "<div>";
-                            echo "<pre class=\"cow\">" . nl2br($text) . "</pre>";
-                        echo "</div>";
-                    echo "</div>";
-                echo "</div>";
-            }
-
-        ?>
-
+        <div class="card-body">
+            <article>
+                <div>
+                    <div>
+                        <h1>Shear Viscosity in $\mathcal{N}=4$ SYM Plasma Through the AdS/CFT Correspondence</h1>
+                        <h2><strong>Riccardo Finotello</strong></h2>
+                        <div>
+                            <p class="next-abstract">This talk aims at the preparation of the seminar for the course Introduction to the Physics of the Quark-Gluon Plasma of the Doctoral School. In the first part of the seminar we build the basic tools needed for the analysis, namely we build the AdS/CFT correspondence as presented by Maldacena: starting from basic knowledge of General Relativity, we build a SUGRA theory containing black holes and branes, show the equivalence of p-branes and Dp-branes from string theory and define the AdS/CFT duality. After showing a simple application in the computation of the inter-quark potential, we apply the procedure to compute the shear viscosity of a viscous plasma at finite temperature.</p>
+                        </div>
+                        <form action="./abstract/abstract.php" target="_blank" method="post" enctype="text/plain">
+                            <input type="hidden" name="autore" value="Riccardo Finotello">
+                            <input type="hidden" name="titolo" value="Shear Viscosity in $\mathcal{N}=4$ SYM Plasma Through the AdS/CFT Correspondence">
+                            <input type="hidden" name="data" value="2018-05-03">
+                            <input type="hidden" name="sommario" value="This talk aims at the preparation of the seminar for the course Introduction to the Physics of the Quark-Gluon Plasma of the Doctoral School. In the first part of the seminar we build the basic tools needed for the analysis, namely we build the AdS/CFT correspondence as presented by Maldacena: starting from basic knowledge of General Relativity, we build a SUGRA theory containing black holes and branes, show the equivalence of p-branes and Dp-branes from string theory and define the AdS/CFT duality. After showing a simple application in the computation of the inter-quark potential, we apply the procedure to compute the shear viscosity of a viscous plasma at finite temperature.">
+                            <input class="admin" style="display:none;" type="submit" name="PDF" value="PDF-generate">
+                        </form>
+                        <a href="./abstract/abstract/2018-05-03.pdf" target="_blank" role="button" rel="noopener noreferrer">PDF</a>
+                        <ul>
+                            <li><strong>Main reference:</strong> <a href="https://arxiv.org/abs/hep-th/0104066" target="_blank" rel="noopener noreferrer">hep-th/0104066</a></li>
+                            <li><strong>Other reference:</strong> <a href="https://arxiv.org/abs/0712.0689" target="_blank" rel="noopener noreferrer">arXiv:0712.0689</a></li>
+                        </ul>
+                        <ul>
+                            <li><strong>Attachment(s):</strong> <a href="./proceedings/09_finotello.pdf" target="_blank" rel="noopener noreferrer">presentation</a></li>
+                        </ul>
+                        <ul>
+                            <li><strong>Date:</strong> Thursday 3<sup>rd</sup> May 2018</li>
+                            <li><strong>Time:</strong> 12:00 pm</li>
+                            <li><strong>Location:</strong> open space office (old building)</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+        </div>
         <!-- Calendar -->
         <h1 class="section-header">Calendar</h1>
         <hr>        
@@ -324,79 +227,32 @@ if ($DB_DCONN->connect_errno) {
         <!-- Past events -->
         <h1 id="pastEvents" class="section-header">Past events</h1>
         <hr>
-        <?php
-
-        $DB_QUERY = "SELECT * FROM " . $DB_TABLE . " WHERE DATE < CURDATE() ORDER BY DATE DESC";
-        $JC_TABLE = $DB_DCONN->query($DB_QUERY);
-        if ($JC_TABLE->num_rows > 0) {
-
-            while ($row = $JC_TABLE->fetch_assoc()) {
-
-                echo "<div class=\"card-body\">";
-                echo "<article>";
-                    echo "<div>";
-                        echo "<div>";
-                            echo "<h1>";
-                                echo $row["TITLE"];
-                            echo "</h1>";
-                            echo "<h2>";
-                                echo "<strong>" . $row["SPEAKER"] . "</strong>";
-                            echo "</h2>";
-
-                            if ($abstract = $row["ABSTRACT"]) {
-
-                                echo "<div>";
-                                    echo "<p>" . $abstract . "</p>";
-                                echo "</div>";
-
-                                echo "<form action=\"./abstract/abstract.php\" target=\"_blank\" method=\"post\" enctype=\"text/plain\">";
-                                    echo "<input type=\"hidden\" name=\"autore\" value=\"" . $row["SPEAKER"] . "\">";
-                                    echo "<input type=\"hidden\" name=\"titolo\" value=\"" . $row["TITLE"] . "\">";
-                                    echo "<input type=\"hidden\" name=\"data\" value=\"" . $row["DATE"] . "\">";
-                                    echo "<input type=\"hidden\" name=\"sommario\" value=\"" . $abstract . "\">";
-                                    echo "<input class=\"admin\" style=\"display:none;\" type=\"submit\" name=\"PDF\" value=\"PDF-generate\">";
-                                echo "</form>";
-
-                                echo "<a href=\"./abstract/abstract/" . $row["DATE"] . ".pdf\" target=\"_blank\" role=\"button\" rel=\"noopener noreferrer\">PDF</a>";
-
-                            }
-
-                            if ($reference = $row["REFERENCE"]) {
-
-                                echo "<ul>";
-                                    echo "<li<strong>Main reference:</strong> <a href=\"" . $reference . "\" target=\"_blank\" rel=\"noopener noreferrer\">" . $row["REFERENCE_TXT"] . "</a></li>";
-                                        
-                                if ($reference2 = $row["REFERENCE2"]) {
-
-                                        echo "<li><strong>Other reference:</strong> <a href=\"" . $reference2 . "\" target=\"_blank\" rel=\"noopener noreferrer\">" . $row["REFERENCE2_TXT"] . "</a></li>";
-                                }
-
-                                echo "</ul>";
-
-                            }
-                            
-                            if ($attachment = $row["PROCEEDING"]) {
-
-                                    echo "<ul>";
-                                        echo "<li><strong>Attachment(s):</strong> <a href=\"" . $attachment . "\" target=\"_blank\" rel=\"noopener noreferrer\">" . $row["PROCEEDING_TXT"] . "</a></li>";
-                                    echo "</ul>";
-                                }
-
-                            $date = date("l j\<\s\u\p\>S\<\/\s\u\p\> F Y", strtotime($row["DATE"]));
-
-                            echo "<ul>";
-                                echo "<li><strong>Date:</strong> " . $date . "</li>";
-                            echo "</ul>";
-                        echo "</div>";
-                echo "</div>";
-            echo "</article>";
-            echo "</div>";
-            }
-
-        }
-
-        ?>
-        
+        <div class="card-body">
+            <article>
+                <div>
+                    <div>
+                        <h1>Measurement of Higgs boson properties in the $4\ell$ final state at $\sqrt{s}=13~\mathrm{TeV}$ at CMS</h1>
+                        <h2><strong>Alessandra Cappati</strong></h2>
+                        <div>
+                            <p>Since its discovery in 2012 by the ATLAS and CMS Collaborations at the CERN LHC, the Higgs boson has been deeply studied in order to understand its nature in detail and to test possible discrepancies from the Standard Model of particle physics. Among its different possible decay modes, the Higgs boson to four lepton decay channel ($\mathrm{H} \to \mathrm{ZZ} \to 4\ell$) is one of the most important. It has been widely exploited for the Higgs boson discovery and for the measurement of its properties, thanks to the large signal over background ratio and to the possibility of fully reconstructing the kinematics of the decay. This talk presents the status of the analysis on Higgs boson properties measured in the $\mathrm{H} \to \mathrm{ZZ} \to 4\ell$ decay channel using proton-proton collision data collected by the CMS experiment at a centre-of-mass energy of 13 TeV. In particular, the measurement of the signal strength modifier (defined as the ratio of the observed Higgs boson rate in the $\mathrm{H} \to \mathrm{ZZ} \to 4\ell$ channel to the Standard Model expectation) is given both inclusively and separately for the individual Higgs boson production modes.</p>
+                        </div>
+                        <form action="./abstract/abstract.php" target="_blank" method="post" enctype="text/plain">
+                            <input type="hidden" name="autore" value="Alessandra Cappati">
+                            <input type="hidden" name="titolo" value="Measurement of Higgs boson properties in the $4\ell$ final state at $\sqrt{s}=13~\mathrm{TeV}$ at CMS">
+                            <input type="hidden" name="data" value="2018-03-29">
+                            <input type="hidden" name="sommario" value="Since its discovery in 2012 by the ATLAS and CMS Collaborations at the CERN LHC, the Higgs boson has been deeply studied in order to understand its nature in detail and to test possible discrepancies from the Standard Model of particle physics. Among its different possible decay modes, the Higgs boson to four lepton decay channel ($\mathrm{H} \to \mathrm{ZZ} \to 4\ell$) is one of the most important. It has been widely exploited for the Higgs boson discovery and for the measurement of its properties, thanks to the large signal over background ratio and to the possibility of fully reconstructing the kinematics of the decay. This talk presents the status of the analysis on Higgs boson properties measured in the $\mathrm{H} \to \mathrm{ZZ} \to 4\ell$ decay channel using proton-proton collision data collected by the CMS experiment at a centre-of-mass energy of 13 TeV. In particular, the measurement of the signal strength modifier (defined as the ratio of the observed Higgs boson rate in the $\mathrm{H} \to \mathrm{ZZ} \to 4\ell$ channel to the Standard Model expectation) is given both inclusively and separately for the individual Higgs boson production modes."><input class="admin" style="display:none;" type="submit" name="PDF" value="PDF-generate">
+                        </form>
+                        <a href="./abstract/abstract/2018-03-29.pdf" target="_blank" role="button" rel="noopener noreferrer">PDF</a>
+                        <ul>
+                            <li><strong>Main reference:</strong> <a href="https://arxiv.org/abs/1706.09936" target="_blank" rel="noopener noreferrer">arXiv:1706.09936</a></li>
+                        </ul>
+                        <ul>
+                            <li><strong>Date:</strong> Thursday 29<sup>th</sup> March 2018</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+        </div>
     </div> <!-- end of id="content" -->
 </div> <!-- end of id="pageWidth" -->
 
