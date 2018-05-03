@@ -128,6 +128,18 @@ if ($DB_DCONN->connect_errno) {
     <meta name="msapplication-wide310x150logo" content="./images/campusnet_310x150.png">
     <meta name="msapplication-square310x310logo" content="./images/campusnet_310x310.png">
 
+    <!-- Open Graph metadata to display on Social Media and chats -->
+    <meta property="og:title" content="Torino PhD Journal Club">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://falstaff.ddns.net/journalclub">
+    <meta property="og:image" content="https://falstaff.ddns.net/journalclub/images/campusnet.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="2048">
+    <meta property="og:image:height" content="2048">
+    <meta property="og:image:alt" content="Campusnet Logo">
+    <meta property="og:description" content="JC schedule - PhD School in Physics in Torino, Italy">
+    <meta property="og:determiner" content="the">
+    <meta property="og:locale" content="en_GB">
 </head>
 
 <!-- Start slide show upon loading the page -->
