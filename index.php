@@ -459,7 +459,7 @@ if ($DB_DCONN->connect_errno) {
 </div>
 
 <!-- Start slideshow as page has loaded -->    
-<script type="text/javascript">
+<script>
 function start(){
     StartSlideShow();
     start_menue();
