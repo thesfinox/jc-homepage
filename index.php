@@ -313,13 +313,11 @@ if ($DB_DCONN->connect_errno) {
 
             }
             else {
-                echo "<div class=\"card-body\">";
+                echo "<div class=\"cow\">";
                     echo "<p>There are no seminars scheduled, so here is a thinking cow:</p>";
                     echo "<div>";
                         $text = shell_exec("/usr/games/fortune -n400 -s | /usr/games/cowthink -W25");
-                        echo "<div>";
-                            echo "<pre class=\"cow\">" . nl2br($text) . "</pre>";
-                        echo "</div>";
+                        echo "<pre>" . nl2br($text) . "</pre>";
                     echo "</div>";
                 echo "</div>";
             }

@@ -449,3 +449,22 @@ hr {
     height: 100%;
     opacity: 0;
 }
+
+/******************************/
+/* Cowthink command           */
+/******************************/
+
+.cow {
+    font-size: large;
+    width: 95%;
+}
+
+.cow div {
+    width: 40%;
+    margin-left: 15%;
+    margin-right: auto;
+}
+
+.cow pre {
+    line-height: 0.65;
+}
