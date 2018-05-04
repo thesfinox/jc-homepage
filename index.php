@@ -164,7 +164,7 @@ if ($DB_DCONN->connect_errno) {
 
 <!-- Navbar -->
 <div id="menue_bar">
-    <button id="open_close" role="button" aria-label="Navigation button">
+    <button id="open_close" aria-label="Navigation button">
     </button>
     <div id="menue">
         <a href="#"><div class="point">
