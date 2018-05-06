@@ -20,19 +20,17 @@ Inside the project you can find several file and directories, such as:
   - `message.md`: Markdown file with the message of the day/week/month
   - `Parsedown.php`: external [library](http://parsedown.org/) which translates the message of the day in HTML tags to be displayed on the hosted page (in the static version it is not referenced)
 - `css`:
-  - `bootstrap.css`: main CSS file written in SASS. You can find it [here](https://getbootstrap.com/).
-  - `bootstrap.css.map`: map file for the previous file, written in SASS.
+  - `main.css`: CSS file for the page
+  - `main.min.css`: minified version of the CSS file
 - `images`:
   - most of the images are needed for the Progressive Web App functionality in the [manifest.json](https://developers.google.com/web/fundamentals/web-app-manifest/). In the page you will mostly need the `jpg` files (which should be Progressive JPEG).
 - `js`:
-  - `bootstrap.js`: Javascript file needed by the CSS file
-  - `bootstrap.js.map`: map file for the previous Javascript
-  - `jquery.js`: Javascript library for `bootstrap.js`
-  - `lazyload.js`: Javascript for the [lazy load](https://appelsiini.net/projects/lazyload/) functionality (i.e.: initially the page loads some dummy pictures and only after the page is fully loaded it displays the correct images)
-  - `main.js`: though it is disabled in the static version, here you can find the custom functions such as the administrator panel and the service worker declaration
-  - `manup.js`: only needed to generate the Progressive Web App favicon and splashscreen, starting from the `manifest.json` file
-  - `popper.js`: bundled with Bootstrap, in case we want to display tooltip messages
-  - `scrollreveal.js`: [scroll reveal](https://scrollrevealjs.org/) functionality
+  - `gallery.js`: Javascript for the slideshow
+  - `gallery.min.js`: minified version
+  - `main.js`: admin mode code and service worker registration
+  - `main.min.js`: minified version
+  - `menue.js`: navbar code
+  - `menue.min.js`: minified version
 - `index.html`: static webpage
 - `index.php`: dynamic PHP page
 - `manifest.json`: declaration of the page properties
@@ -54,4 +52,4 @@ Please, refer to this page for bug reports and info.
 ## License
 
 Since this is a free project, designed to be open source, the code is released
-under the GNU GPLv3 license.
+under the MIT license.
