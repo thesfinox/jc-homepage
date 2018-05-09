@@ -27,6 +27,12 @@ function hide(){
     shown=0;
 };
 
+function klick_menue(){
+    if(document.documentElement.clientWidth<1001){
+        hide();
+    }
+};
+
 function start_menue(){
     if(document.documentElement.clientWidth>1000){
         show50();
