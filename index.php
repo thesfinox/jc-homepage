@@ -78,12 +78,6 @@ if ($DB_DCONN->connect_errno) {
     <!-- CSS file -->
     <link rel="stylesheet" href="./css/main.min.css">
 
-    <!-- Inline CSS (faster loading) -->
-    <style>
-        body {position: relative;}
-        .cow {line-height:0.65;}
-    </style>
-
     <!-- Scripts to open and close the menu of the mobile verion -->
     <script src="./js/menue.min.js" async></script>
 
@@ -167,19 +161,19 @@ if ($DB_DCONN->connect_errno) {
     <button id="open_close" aria-label="Navigation button">
     </button>
     <div id="menue">
-        <a href="#"><div class="point">
+        <a href="#" onclick="klick_menue()"><div class="point">
             Home
         </div></a>
-        <a href="#nextEvent"><div class="point">
+        <a href="#nextEvent" onclick="klick_menue()"><div class="point">
             Next Event
         </div></a>
-        <a href="#pastEvents"><div class="point">
+        <a href="#pastEvents" onclick="klick_menue()"><div class="point">
             Past Events
         </div></a>
-        <a href="#links"><div class="point">
+        <a href="#links" onclick="klick_menue()"><div class="point">
             Links
         </div></a>
-        <a href="#contact"><div class="point">
+        <a href="#contact" onclick="klick_menue()"><div class="point">
             Contact
         </div></a>
         <div class="end">

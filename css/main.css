@@ -2,26 +2,30 @@
 /* General Style of body and content  */
 /**************************************/
 
-body{
+body {
     margin: 0px;
     text-align: justify;
     font-family: Arial;
     background-image: url("../images/bg/bg01.png");
     background-repeat: repeat;
 }
-#content{
+
+#content {
     clear: both;
     min-height: 100vh;
 }
+
 /* Admin mode */
 .admin {
     margin: 10pt;
 }
+
 /* Centered text for titles */
 .section-header {
     text-align: center;
     text-transform: uppercase;
 }
+
 /* Nice horizontal line */
 hr {
     display: block;
@@ -33,16 +37,17 @@ hr {
     border-width: 1px;
     border-color:rgba(0,0,0,0.3);
 }
+
 /* Always visible footer at the bottom of the page */
 #footer{
     position: relative;
-/*    margin-top: 50px;*/
     background-image: url("../images/bg/bg01.png");
     background-repeat: repeat;
     background-color:#618DB1;
     min-height:100px;
     padding: 1%;
 }
+
 /* Contact field in the footer */
 #contact{
     font-size: small;
@@ -62,6 +67,7 @@ hr {
     display:inline-block;
     color:#34638A;
 }
+
 .mail div{
     position:absolute;
     top:0;
@@ -81,7 +87,7 @@ hr {
 /*  Always visible menue bar at the top of the page
     Then the menue itself might be displayed on the bar
     or opend from the bar depending on the window width  */
-#menue_bar{
+#menue_bar {
     top:0px;
     margin: 0 auto;
     position: fixed;
@@ -92,16 +98,18 @@ hr {
     background-repeat: repeat;
     z-index:1;
 }
-#menue a{
+
+#menue a {
     text-decoration:none;
     color:black;
 }
+
 /* Single buttons in the menue */
-#menue .point{
+#menue .point {
     height: 50px;
     line-height: 50px;
 }
-#menue .point:hover{
+#menue .point:hover {
     color:white;
     background-color:rgba(0,0,0,0.3);
     background-image: url("../images/bg/bg01.png");
@@ -111,27 +119,31 @@ hr {
 /***********************************/
 /* Banner with page name and logo  */
 /***********************************/
-#banner{
+#banner {
     background-image: url("../images/bg/bg01.png");
     background-repeat: repeat;
     background-color:#618DB1;
     width: 100%;
     padding-top:50px;
 }
-#banner .img{
+
+#banner .img {
     float:right;
     height:100%;
 }
-#banner img{
+
+#banner img {
     display:inline-block;
     vertical-align:middle;
     width:90%;
 }
-#banner .title{
+
+#banner .title {
     float:left;
     text-align:center;
 }
-#banner .end{
+
+#banner .end {
     width:100%;
     clear:both;
 }
@@ -156,8 +168,6 @@ hr {
 /* Calendar frame                  */
 /***********************************/
 
-
-
 .calendar {
     position: relative;
 }
@@ -181,7 +191,7 @@ hr {
 /* Links                           */
 /***********************************/
 
-#links{
+#links {
     width: 100%;
     background-color:#C8DEEE;
     background-image: url("../images/bg/bg01.png");
@@ -191,31 +201,39 @@ hr {
     margin-top: 50px;
     padding-top: 20px;
 }
-#links a{
+
+#links a {
     color:inherit;
 }
-#links .clear{
+
+#links .clear {
     clear:both;
 }
-#links h1{
+
+#links h1 {
     text-align:center;
     color:black;
 }
-#links h2{
+
+#links h2 {
     font-size:1em;
 }
-.link{
+
+.link {
     width:25%;
     float:left;
 }
-.link:hover{
+
+.link:hover {
     color:black;
 }
-.link img{
+
+.link img {
     width:90%;
     padding:5%;
 }
-.link img:hover{
+
+.link img:hover {
     width:96%;
     padding:2%;
 }
@@ -223,17 +241,20 @@ hr {
 
 /*
     Special style for small window width
+    i.e.: max width less than 1000px
 */
+
 @media screen and (max-width: 1000px) {
     /* Menue displayed upon opening */
-    #menue{
+    #menue {
         background-color:#618DB1;
         background-image: url("../images/bg/bg01.png");
         background-repeat: repeat;
         overflow:hidden;
         height:260px;
     }
-    #menue .point{
+
+    #menue .point {
         border-bottom-color:rgba(0,0,0,0.1);
         border-bottom-width:1px;
         border-bottom-style:solid;
@@ -241,26 +262,32 @@ hr {
         border-top-width:1px;
         border-top-style:solid;
     }
+
     /* Fixed size adjusted with window width */
-    #banner{
+    #banner {
         height: 25vw;
     }
-    #banner .img{
+
+    #banner .img {
         width:30%;
         line-height:100%;
     }
-    #banner .title{
+
+    #banner .title {
         padding-top:2vw;
         width:70%;
     }
-    #banner .title h1{
+
+    #banner .title h1 {
         font-size:4vw;
     }
-    #banner .title h2{
+
+    #banner .title h2 {
         font-size:2.5vw;
     }
+
     /* Button to open and close the menue */
-    #open_close{
+    #open_close {
         float:right;
         margin-top:10px;
         margin-right:30px;
@@ -271,35 +298,41 @@ hr {
         border-width:3px;
         border-radius:7px;
     }
-    #menue_bar .end{
+
+    #menue_bar .end {
         width:100%;
         clear:right;
     }
-    #menue{
+
+    #menue {
         position:fixed;
         top:50px;
         width: 100%;
     }
-    #menue .point{
+
+    #menue .point {
         padding-left:50px;
     }
-    #content{
+
+    #content {
         padding: 2%;
     }
 }
 
 /*
- Special style for large window width
- */
+    Special style for large window width
+    i.e.: width starting from 1001px
+*/
 @media screen and (min-width: 1001px) {
     /* Maxmal page width of 1000px centered on page */
-    .pageWidth{
+    .pageWidth {
         margin: auto;
         max-width: 1000px;
     }
+
     /*  Button to open and close the menue
         Only needed for small width - remove from sight!*/
-    #open_close{
+    #open_close {
         top: -50px;
         position:fixed;
         width:0;
@@ -307,30 +340,44 @@ hr {
         background: transparent;
         border: none !important;
     }
+
     /* Fixed size banner */
-    #banner{
+    #banner {
         height: 200px;
     }
-    #banner .img{
+
+    #banner .img {
         width:270px;
         line-height:200px;
     }
-    #banner .title{
+
+    #banner .title {
         width:720px;
         padding-top:20px;
     }
+
+    #banner .title h1 {
+        font-size:2vw;
+    }
+
+    #banner .title h2 {
+        font-size:1.25vw;
+    }
+
     /* Menue displayed ontop of the menue_bar */
-    #menue{
+    #menue {
         max-width: 1000px;
         margin: 0 auto;
         top:0px;
     }
-    #menue .point{
+
+    #menue .point {
         float:left;
         width:200px;
         text-align:center;
     }
-    #menue .end{
+
+    #menue .end {
         width:100%;
         clear:left;
     }
@@ -340,7 +387,7 @@ hr {
 /* Event Style */
 /***************/
 
-.card-body{
+.card-body {
     width:95.5%;
     margin-top:15px;
     margin-bottom:15px;
@@ -354,15 +401,18 @@ hr {
     background-image: url("../images/bg/bg01.png");
     background-repeat: repeat;
 }
-.card-body h1{
+
+.card-body h1 {
     text-align: left;
     font-size:25px;
 }
-.card-body h2{
+
+.card-body h2 {
     text-align: left;
     font-size:20px;
 }
-.card-body a{
+
+.card-body a {
     padding: 7px 15px 7px 15px;
     border-style:solid;
     border-color:rgba(0,0,0,0.8);
@@ -372,17 +422,20 @@ hr {
     color:white;
     text-decoration:none;
 }
-.card-body ul{
+
+.card-body ul {
     text-align:left;
     list-style-type: none;
     padding-left:0;
 }
-.card-body li span{
+
+.card-body li span {
     display:inline-block;
     min-width:100px;
     font-weight:bold;
 }
-.card-body li a{
+
+.card-body li a {
     padding:0px;
     border-style:none;
     background:none;
@@ -391,6 +444,7 @@ hr {
     text-decoration-style: dotted;
     padding-left:0;
 }
+
 .card-body .next-abstract {
     font-size: large;
 }
@@ -399,25 +453,27 @@ hr {
 /*Picture Gallery*/
 /*****************/
 
-.galleryPicture{
+.galleryPicture {
     position: absolute;
     top:-100%; left:0; right: 0; bottom:-100%;
     margin: auto;
     width:100%;
 }
 
-.galleryPictureBox{
+.galleryPictureBox {
     margin-top: 15px;
     margin-bottom: 15px;
     position: relative;
-    width: 100%;        /* desired width */
+    width: 100%;
 }
-.galleryPictureBox:before{
+
+.galleryPictureBox:before {
     content: "";
     display: block;
     padding-top: 50%;
 }
-.galleryPictureContent{
+
+.galleryPictureContent {
     position:  absolute;
     top: 0;
     left: 0;
@@ -427,30 +483,30 @@ hr {
     overflow:hidden;
 }
 
-.galleryButtonLeft{
+.galleryButtonLeft {
     position: absolute;
     top:0; left:0;
     height:100%;
     opacity: 0.1;
 }
 
-.galleryButtonRight{
+.galleryButtonRight {
     position: absolute;
     top:0; right: 0;
     height:100%;
     opacity: 0.1;
 }
 
-.galleryButtonLeft:hover{
+.galleryButtonLeft:hover {
     background-color: rgba(0,0,0,0.2);
     opacity: 1;
 }
-.galleryButtonRight:hover{
+.galleryButtonRight:hover {
     background-color: rgba(0,0,0,0.2);
     opacity: 1;
 }
 
-.galleryTouch{
+.galleryTouch {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -470,8 +526,4 @@ hr {
     width: 40%;
     margin-left: 15%;
     margin-right: auto;
-}
-
-.cow pre {
-    line-height: 1.0;
 }
