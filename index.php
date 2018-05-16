@@ -241,7 +241,7 @@ if ($DB_DCONN->connect_errno) {
 
                 while ($row = $JC_TABLE->fetch_assoc()) {
 
-                    echo "<div class=\"card-body\">";
+                    echo "<div id=\"" . $row["DATE"] . "\" class=\"card-body\">";
                     echo "<article>";
                         echo "<div>";
                             echo "<div>";
@@ -336,7 +336,7 @@ if ($DB_DCONN->connect_errno) {
 
             while ($row = $JC_TABLE->fetch_assoc()) {
 
-                echo "<div class=\"card-body\">";
+                echo "<div id=\"" . $row["DATE"] . "\" class=\"card-body\">";
                 echo "<article>";
                     echo "<div>";
                         echo "<div>";
